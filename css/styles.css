@@ -1,0 +1,53 @@
+body {
+  height: 100vh;
+  background: #571745;
+  color: #ffc300;
+  display: grid;
+  grid-template-rows: 150px 500px 1fr;
+  grid-template-areas:
+    "title title"
+    "map map"
+    "p1 p2";
+
+}
+
+img {
+  height: 90%;
+  width: 90%;
+
+}
+
+#title {
+  grid-area: title;
+}
+
+#map {
+  display: flex;
+  justify-content: center;
+  grid-area: map;
+  /* background: yellow; */
+}
+
+#player-one-section {
+  grid-area: p1;
+  background: #900c3d;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font: 1em sans-serif;
+}
+
+#player-two-section {
+  grid-area: p2;
+  background: #c70139;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font: 1em sans-serif;
+}
+
+.btn {
+  display: block;
+  width: 40%;
+  height: 15%;
+}
