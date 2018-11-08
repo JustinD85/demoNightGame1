@@ -39,6 +39,10 @@ progress {
 }
 
 
+canvas {
+  background: lightgrey;
+}
+
 
 #title {
   grid-area: title;
