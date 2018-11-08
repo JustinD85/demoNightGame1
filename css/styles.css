@@ -23,9 +23,26 @@ img {
   animation: jello-vertical 0.9s both;
 }
 
+article {
+  display: flex;
+  justify-content: space-around;
+}
+
+p {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+progress {
+  height: 10px;
+  margin: 15px;
+}
+
+
 canvas {
   background: lightgrey;
 }
+
 
 #title {
   grid-area: title;
@@ -60,7 +77,7 @@ canvas {
 }
 
 .btn {
-  display: block;
-  width: 40%;
+  display: inline-block;
+  width: 30%;
   height: 15%;
 }
