@@ -23,7 +23,9 @@ img {
   animation: jello-vertical 0.9s both;
 }
 
-
+canvas {
+  background: lightgrey;
+}
 
 #title {
   grid-area: title;
