@@ -109,13 +109,13 @@ class Game {
       if (player.isP1) {
         get('#js-p1-name').innerText = player.name;
         get('#js-p1-health').value = player.health;
-        get('#js-p1-energy').innerText = player.energy;
-        get('#js-p1-mana').innerText = player.mana;
+        get('#js-p1-energy').value = player.energy;
+        get('#js-p1-mana').value = player.mana;
       } else {
         get('#js-p2-name').innerText = player.name;
         get('#js-p2-health').value = player.health;
-        get('#js-p2-energy').innerText = player.energy;
-        get('#js-p2-mana').innerText = player.mana;
+        get('#js-p2-energy').value = player.energy;
+        get('#js-p2-mana').value = player.mana;
       }
     });
 
