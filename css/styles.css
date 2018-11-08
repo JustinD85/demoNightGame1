@@ -11,15 +11,26 @@ body {
 
 }
 
-img {
+canvas {
   height: 90%;
   width: 90%;
 
 }
 
+img {
+  width: 750px;
+  -webkit-animation: jello-vertical 0.9s both;
+  animation: jello-vertical 0.9s both;
+}
+
+
+
 #title {
   grid-area: title;
+  display: flex;
+  justify-content: center;
 }
+
 
 #map {
   display: flex;
