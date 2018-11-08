@@ -7,6 +7,7 @@ class Player {
     this.mana = 100;
     this.burned = false;
     this.isStopped = false;
+    this.potions = 0;
   }
   atkOne(inP) {
     if (this.nowRooted()) {
@@ -18,6 +19,12 @@ class Player {
     }
   }
   atkTwo(inP) {
+    if (this.nowRooted()) {
+      console.log('I cant move!')
+    }
+    if (this.class !== 'warrior') {
+      return 'I cant use this'
+    }
     if (this.class === 'warrior') {
       inP.health -= 20;
       this.energy -= 20;
@@ -26,7 +33,13 @@ class Player {
     this.isBurned(this);
   }
   splOne(inP, spell) {
-    if (this.class === 'mage' && spell === 'fire') {
+    if (this.nowRooted()) {
+      console.log('I cant move!')
+    }
+    if(this.class !== 'mage' && spell === 'fire') {
+      return 'I cant use this'
+    }
+    if(this.class === 'mage' && spell === 'fire') {
       inP.health -= 15;
       inp.burned = true;
       this.energy -= 10;
@@ -39,6 +52,12 @@ class Player {
     this.isBurned(this);
   }
   splTwo(inP, spell) {
+    if (this.nowRooted()) {
+      console.log('I cant move!')
+    }
+    if(this.class !== 'druid') {
+      return 'I cant use this'
+    }
     if (this.class === 'druid' && spell === 'vine') {
       inP.health -= 10;
       inP.isStopped = true;
@@ -48,14 +67,28 @@ class Player {
     this.isBurned(this);
   }
   healSelf() {
-    this.health += 5;
-    this.energy += 10;
-    this.mana -= 10;
-    this.isBurned(this);
+    if (this.nowRooted()) {
+      console.log('I cant move!')
+    } else {
+    this.potions++
+    if(this.potions <= 5) {
+        this.health += 5;
+        this.energy += 10;
+        this.mana -= 10;
+        this.isBurned(this);
+      } else {
+        return 'no heals for me'
+      }
+    }
   }
   dfndSelf() {
-    this.health += 10;
-    this.isBurned(this);
+    if (this.nowRooted()) {
+      console.log('I cant move!')
+    } else { 
+      this.health += 10;
+      this.energy -= 15;
+      this.isBurned(this);
+    }
   }
   isBurned(inP) {
     if (inP.burned === true) {
