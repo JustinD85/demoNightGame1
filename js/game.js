@@ -9,16 +9,16 @@ class Player {
     this.isStopped = false;
   }
   atkOne(inP) {
-    if(this.nowRooted()) {
+    if (this.nowRooted()) {
       console.log('I cant move!')
-    } else { 
+    } else {
       inP.health -= 10;
       this.energy -= 10;
       this.isBurned(this);
     }
   }
   atkTwo(inP) {
-    if(this.class === 'warrior') {
+    if (this.class === 'warrior') {
       inP.health -= 20;
       this.energy -= 20;
       this.mana -= 10;
@@ -26,12 +26,12 @@ class Player {
     this.isBurned(this);
   }
   splOne(inP, spell) {
-    if(this.class === 'mage' && spell === 'fire') {
+    if (this.class === 'mage' && spell === 'fire') {
       inP.health -= 15;
       inp.burned = true;
       this.energy -= 10;
       this.mana -= 15;
-    } else if(spell === 'hydro') {
+    } else if (spell === 'hydro') {
       inP.burned = false;
       this.energy -= 10;
       this.mana -= 10;
@@ -39,10 +39,10 @@ class Player {
     this.isBurned(this);
   }
   splTwo(inP, spell) {
-    if(this.class === 'druid' && spell === 'vine') {
+    if (this.class === 'druid' && spell === 'vine') {
       inP.health -= 10;
       inP.isStopped = true;
-      this.energy -=5;
+      this.energy -= 5;
       this.mana -= 15;
     }
     this.isBurned(this);
@@ -116,3 +116,9 @@ function get(ele) {
 function getAll(eleArr) {
   return document.querySelector(eleArr);
 }
+
+const canv = get('canvas');
+let ctx = canv.getContext('2d');
+ctx.fillStyle = 'green';
+ctx.border = '5px solid black';
+ctx.fillRect(125, 75, 15, 15);
