@@ -6,13 +6,16 @@ class Player {
     this.energy = 100;
     this.mana = 100;
     this.burned = false;
-    this.rooted = false;
-    this.stopped = 0;
+    this.isStopped = false;
   }
   atkOne(inP) {
-    inP.health -= 10;
-    this.energy -= 10;
-    this.isBurned(this);
+    if(this.nowRooted()) {
+      console.log('I cant move!')
+    } else { 
+      inP.health -= 10;
+      this.energy -= 10;
+      this.isBurned(this);
+    }
   }
   atkTwo(inP) {
     if(this.class === 'warrior') {
@@ -38,7 +41,7 @@ class Player {
   splTwo(inP, spell) {
     if(this.class === 'druid' && spell === 'vine') {
       inP.health -= 10;
-      inP.rooted = true;
+      inP.isStopped = true;
       this.energy -=5;
       this.mana -= 15;
     }
@@ -55,19 +58,21 @@ class Player {
     this.isBurned(this);
   }
   isBurned(inP) {
-    if (inPerson.burned === true) {
-      inPerson.health -= 10;
+    if (inP.burned === true) {
+      inP.health -= 10;
       console.log('I am BURNIN!🔥')
     }
   }
-  isRooted(inP) {
-    if (this.rooted === true && this.stopped === 0) {
-      this.stopped++
-      return 'I CANT MOVE!'
+  nowRooted(inP) {
+    if (this.isStopped) {
+      this.isStopped = !this.isStopped;
+      return true;
+    } else {
+      return false;
     }
   }
 }
-const duy = new Player('Duy');
+const duy = new Player('Duy', 'druid');
 const gabe = new Player('Gabe');
 const justin = new Player('JazzyIdiomatic');
 // List of classes that can be used!:
