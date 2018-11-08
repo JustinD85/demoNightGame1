@@ -6,27 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animation.css">
     <title>Document</title>
   </head>
 
   <body>
     <header id="title">
-      <h1>the game title here</h1>
+      <img src="title.svg" alt="title">
     </header>
     <section id="map">
-      <img src="https://vignette.wikia.nocookie.net/universe-of-smash-bros-lawl/images/d/d4/WiiU_SuperSmashBros_Stage10_Screen_02.jpg/revision/latest?cb=20150301044746">
+      <canvas>
+      </canvas>
     </section>
     <section id="player-one-section">
       <h1>Player one</h1>
-      <button class="btn weakAttk">weak attack</button>
-      <button class="btn heavyAttk">heavy attack</button>
-      <button class="btn">special attack</button>
+      <img class="btn weakAttk" src="normalbutton.svg">
+      <img class="btn heavyAttk" src="heavybutton.svg">
+      <img class="btn" src="specialbutton.svg">
     </section>
     <section id="player-two-section">
       <h1>Player two</h1>
-      <button class="btn weakAttk">weak attack</button>
-      <button class="btn heavyAttk">heavy attack</button>
-      <button class="btn">special attack</button>
+      <img class="btn weakAttk" src="normalbutton.svg">
+      <img class="btn heavyAttk" src="heavybutton.svg">
+      <img class="btn" src="specialbutton.svg">
     </section>
     <script src="js/game.js"></script>
   </body>
