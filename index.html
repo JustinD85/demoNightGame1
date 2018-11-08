@@ -19,30 +19,58 @@
       </canvas>
     </section>
     <section id="player-one-section">
-      <article>
-        <p>name: <span id="js-p1-name">player one</span></p>
-        <p>health: </p>
-        <progress value="73" max="100" id="js-p1-health">
-        </progress>
-        <p>energy: <span id="js-p1-energy">100</span></p>
-        <p>mana: <span id="js-p1-mana">100</span></p>
+      <article class="top-player-article">
+        <img class="status-background" src="statusbackground.svg">
+        <table>
+          <tr>
+          <td class="name">Name: <span id="js-p1-name">player one</span></td>
+          <td>Health:
+            <progress value="73" max="100" id="js-p1-health">
+            </progress>
+          </td>
+          </tr>
+          <tr>
+          <td></td>
+          <td>Energy: 
+             <progress value="88" max="100"
+              id="js-p1-energy"></progress>
+          </td>
+            </tr>
+            <tr>
+            <td></td>
+            <td>Mana: 
+              <progress value="56" max="100" id="js-p1-mana"></progress></td>
+          </tr>
+        </table>
       </article>
-      <article>
+      <article class="bottom-article">
         <img class="btn weakAttk" src="normalbutton.svg">
         <img class="btn heavyAttk" src="heavybutton.svg">
         <img class="btn" src="specialbutton.svg">
       </article>
     </section>
     <section id="player-two-section">
-      <article>
-        <p>name: <span id="js-p1-name">player two</span></p>
-        <p>health: </p>
-        <progress value="73" max="100" id="js-p1-health">
-        </progress>
-        <p>energy: <span id="js-p1-energy">100</span></p>
-        <p>mana: <span id="js-p1-mana">100</span></p>
+      <article class="top-player-article">
+        <img class="status-background" src="statusbackground.svg">
+        <table>
+          <tr>
+          <td class="name">Name: <span id="js-p2-name">player one</span></td>
+          <td>Health:
+            <progress value="73" max="100" id="js-p2-health">
+            </progress>
+          </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Energy: <progress value="50" max="100" id="js-p2-energy"></progress></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Mana: <progress value="23" max="100" id="js-p2-mana"></progress></td>
+          </tr>
+        </table>
       </article>
-      <article>
+      <article class="bottom-article">
         <img class="btn weakAttk" src="normalbutton.svg">
         <img class="btn heavyAttk" src="heavybutton.svg">
         <img class="btn" src="specialbutton.svg">
