@@ -1,7 +1,9 @@
 body {
+  margin: 0px;
+  padding: 0px;
   height: 100vh;
   background: #571745;
-  color: #ffc300;
+  color: #000000;
   display: grid;
   grid-template-rows: 150px 500px 1fr;
   grid-template-areas:
@@ -22,11 +24,6 @@ img {
   animation: jello-vertical 0.9s both;
 }
 
-article {
-  display: flex;
-  justify-content: space-around;
-}
-
 p {
   display: inline-block;
   margin-left: 20px;
@@ -34,12 +31,21 @@ p {
 
 progress {
   height: 10px;
-  margin: 15px;
+
 }
 
 
 canvas {
   background: lightgrey;
+}
+
+table {
+  border-spacing: 10px;
+  border-collapse: separate;
+  z-index: 1;
+  position: absolute;
+  left: 50PX;
+  top: 30px;
 }
 
 
@@ -75,8 +81,29 @@ canvas {
   font: 1em sans-serif;
 }
 
+.name {
+  display: block;
+}
+
 .btn {
   display: inline-block;
   width: 30%;
   height: 15%;
+}
+
+.top-player-article {
+  position: relative;
+  height: 150px;
+  width: 100%;
+}
+
+.status-background {
+  position: absolute;
+  left: 0;
+  width: 70%;
+}
+
+.bottom-article {
+  display: flex;
+  justify-content: space-around;
 }
