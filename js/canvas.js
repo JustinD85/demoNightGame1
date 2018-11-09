@@ -1,5 +1,5 @@
 const canv = document.querySelector('canvas');
-var moveBlob = setInterval(myTimer, 16);
+var moveBlob = requestAnimationFrame(myTimer);
 let ctx = canv.getContext('2d');
 let projX = 200;
 let projY = 100;
@@ -17,6 +17,11 @@ if (canv.getContext) {
   }
 }
 
+fireProjectile('player1', 'player2');
+function fireProjectile(playerAttacking,playerDefending) {
+  var newProj = new makeProjectile(playerAttacking,playerDefending);
+}
+
 function myTimer() {
   ctx.clearRect(projX, projY, 15, 15);
   checkProjectilePosition(projX, projY, 15, 15);
@@ -24,6 +29,7 @@ function myTimer() {
   projX = projX + direction[0];
   ctx.fillStyle = 'green';
   ctx.fillRect(projX, projY, 15, 15);
+  var moveBlob = requestAnimationFrame(myTimer);
 }
 
 function checkProjectilePosition(proXVel, projYVel, projSizeX, projSizeY) {
