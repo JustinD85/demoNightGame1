@@ -1,8 +1,9 @@
 const canv = document.querySelector('canvas');
-var moveBlob = requestAnimationFrame(myTimer);
+
 let ctx = canv.getContext('2d');
-let projX = 200;
-let projY = 100;
+var projX = 200;
+var projY = 100;
+var direction = [0, 0];
 const p1 = 'player1';
 const p2 = 'player2';
 
@@ -10,26 +11,42 @@ if (canv.getContext) {
   var myRect = [];
   myRect.push(new makePlayer(p1));
   myRect.push(new makePlayer(p2));
+ 
   for (var i in myRect) {
     oRec = myRect[i];
     ctx.fillStyle = oRec.fill;
     ctx.fillRect(oRec.x, oRec.y, oRec.w, oRec.h);
   }
 }
+const player1animation = myRect[0];
+const player2animation = myRect[1];
 
-fireProjectile('player1', 'player2');
-function fireProjectile(playerAttacking,playerDefending) {
-  var newProj = new makeProjectile(playerAttacking,playerDefending);
+// example casts
+playerCast(player1animation, player2animation);
+// playerCast(player2animation, player1animation);
+
+
+function playerCast(attacker, defender) {
+  attacker.createProjectile(defender);
+  projX = attacker.startX;
+  direction = attacker.direction;
+  projEndX = attacker.endX;
+  requestAnimationFrame(castProjectile);
+
 }
 
-function myTimer() {
+function castProjectile() {
+
   ctx.clearRect(projX, projY, 15, 15);
   checkProjectilePosition(projX, projY, 15, 15);
-  projectileDirection();
   projX = projX + direction[0];
-  ctx.fillStyle = 'green';
+  ctx.fillStyle = 'red';
   ctx.fillRect(projX, projY, 15, 15);
-  var moveBlob = requestAnimationFrame(myTimer);
+  if (projX === projEndX) {
+    return
+  } else { 
+  requestAnimationFrame(castProjectile);
+  }
 }
 
 function checkProjectilePosition(proXVel, projYVel, projSizeX, projSizeY) {
@@ -40,13 +57,12 @@ function checkProjectilePosition(proXVel, projYVel, projSizeX, projSizeY) {
   }
 }
 
-var direction = [1, 0];
 
-function projectileDirection(proXVel, projYVel) {
-  if (proXVel === undefined) {
-    return direction;
-  } else {
-    direction[0] = -direction[0];
-    return direction;
-  }
-}
+// function projectileDirection(proXVel, projYVel) {
+//   if (proXVel === undefined) {
+//     return direction;
+//   } else {
+//     direction[0] = -direction[0];
+//     return direction;
+//   }
+// }

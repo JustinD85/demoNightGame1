@@ -6,11 +6,36 @@ class makePlayer {
         this.fill = 'blue';
     } else {
         this.player = 'player2';
-        this.x = 150;
+        this.x = 200;
         this.fill = 'green';
     }
     this.y = 70;
     this.w = 50;
     this.h = 50;
+    this.startX = 0;
+    this.startY = 0;
+    this.endX = 0;
+    this.endY = 0;
+    this.direction = [];
+    
     }
+
+    createProjectile(defender) {
+     if (this.player === 'player1') {
+              
+        this.startX = this.x + this.w;
+        this.startY = this.y/2;
+        this.endX = defender.x -15;
+        this.endY = this.startY;
+        this.direction = [1,0]
+       
+    } else {
+        this.startX = this.x - 15;
+        this.startY = this.y/2;
+        this.endX = defender.x + defender.w;
+        this.endY = this.startY;
+        this.direction = [-1,0]
+    }
+
+}
 }
