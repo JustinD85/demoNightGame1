@@ -1,1 +1,1 @@
-![Game](img/readMe/game.png)
+![Game](imgs/readMe/game.png)
