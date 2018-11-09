@@ -1,13 +1,12 @@
 class makeProjectile {
-    constructor() {
-        
 
-    // this.player = player || 1;
-    // if(this.player === 1) {
-        this.x = 20;
-        this.y = 70;
-        this.w = 50;
-        this.h = 50;
+    constructor(playerAttacking,playerDefending) {
+        this.playerAttack = myRect[0];
+        this.playerDefend = myRect[1];
+        this.startX = this.playerAttack.x + this.playerAttack.w;
+        this.startY = this.playerAttack.y/2;
+
         this.fill = 'red';
+
     }
 }
