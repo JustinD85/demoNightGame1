@@ -12,7 +12,7 @@
 
   <body>
     <header id="title">
-      <img src="title.svg" alt="title">
+      <img src="imgs/title.svg" alt="title">
     </header>
     <section id="map">
       <canvas>
@@ -20,46 +20,45 @@
     </section>
     <section id="player-one-section">
       <article class="top-player-article">
-        <img class="status-background" src="statusbackground.svg">
+        <img class="status-background" src="imgs/statusbackground.svg">
         <table>
           <tr>
-          <td class="name">Name: <span id="js-p1-name">player one</span></td>
-          <td>Health:
-            <progress value="73" max="100" id="js-p1-health">
-            </progress>
-          </td>
+            <td class="name">Name: <span id="js-p1-name">player one</span></td>
+            <td>Health:
+              <progress value="73" max="100" id="js-p1-health">
+              </progress>
+            </td>
           </tr>
           <tr>
-          <td></td>
-          <td>Energy: 
-             <progress value="88" max="100"
-              id="js-p1-energy"></progress>
-          </td>
-            </tr>
-            <tr>
             <td></td>
-            <td>Mana: 
+            <td>Energy:
+              <progress value="88" max="100" id="js-p1-energy"></progress>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Mana:
               <progress value="56" max="100" id="js-p1-mana"></progress></td>
           </tr>
         </table>
       </article>
       <article class="bottom-article">
-        <img class="btn weakAttk" src="normalbutton.svg">
-        <img class="btn heavyAttk" src="heavybutton.svg">
-        <img class="btn" src="specialbutton.svg">
+        <img class="btn weakAttk" src="imgs/normalbutton.svg">
+        <img class="btn heavyAttk" src="imgs/heavybutton.svg">
+        <img class="btn" src="imgs/specialbutton.svg">
       </article>
     </section>
     <section id="player-two-section">
 
       <article class="top-player-article">
-        <img class="status-background" src="statusbackground.svg">
+        <img class="status-background" src="imgs/statusbackground.svg">
         <table>
           <tr>
-          <td class="name">Name: <span id="js-p2-name">player one</span></td>
-          <td>Health:
-            <progress value="73" max="100" id="js-p2-health">
-            </progress>
-          </td>
+            <td class="name">Name: <span id="js-p2-name">player one</span></td>
+            <td>Health:
+              <progress value="73" max="100" id="js-p2-health">
+              </progress>
+            </td>
           </tr>
           <tr>
             <td></td>
@@ -72,13 +71,15 @@
         </table>
       </article>
       <article class="bottom-article">
-        <img class="btn weakAttk" src="normalbutton.svg">
-        <img class="btn heavyAttk" src="heavybutton.svg">
-        <img class="btn" src="specialbutton.svg">
+        <img class="btn weakAttk" src="imgs/normalbutton.svg">
+        <img class="btn heavyAttk" src="imgs/heavybutton.svg">
+        <img class="btn" src="imgs/specialbutton.svg">
       </article>
     </section>
     <script src="js/makeProjectile.js"></script>
     <script src="js/makePlayer.js"></script>
+    <script src="js/canvas.js"></script>
+    <script src="js/controller.js"></script>
     <script src="js/game.js"></script>
   </body>
 
