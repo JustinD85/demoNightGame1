@@ -1,3 +1,4 @@
+
 const canv = document.querySelector('canvas');
 
 let ctx = canv.getContext('2d');
@@ -66,3 +67,5 @@ function checkProjectilePosition(proXVel, projYVel, projSizeX, projSizeY) {
 //     return direction;
 //   }
 // }
+
+ 

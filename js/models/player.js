@@ -1,24 +1,51 @@
+/*PURPOSE: To have the base functionality of a player. This is different than game specific logic. An example
+is that players can have login information and game histories. Game logic will have what each class in a 
+game does. */
+import {
+  basicSword
+} from './equipment.js';
+import {
+  normalAttack
+} from './abilities.js';
+
 class Player {
   constructor(myName, myClass, isP1) {
     this.name = myName; //js-p{num}-name
     this.class = myClass;
-    this.health = 100; //
-    this.energy = 150; //
-    this.mana = 120; //
-    this.burned = false;
-    this.isStopped = false;
+    this.health = 100;
+    this.energy = 90;
+    this.mana = 70;
+    this.dmg = 10;
+    this.equipment = {
+      helmet: null,
+      armor: null,
+      weapon: null,
+      pocket: {
+        potions: []
+      }
+    };
+    this.ailments = {
+      isBurned: false,
+      isRooted: false
+    };
+    this.baseStats = {
+      health: 100,
+      energy: 100,
+      mana: 90
+    };
+    myClass => {
+      /**Will have default behaviour depending on class */
+      return game.chooseClass(myClass);
+    };
+    // this.health = 100; 
+    // this.energy = 150; 
+    // this.mana = 120; 
+    // this.burned = false;
+    // this.isStopped = false;
     this.isP1 = isP1 || false;
-    this.potions = 0;
+    // this.potions = 0;
   }
-  atkOne(inP) {
-    if (this.nowRooted()) {
-      console.log('I cant move!') //js-p{num}-status
-    } else {
-      game.attacks(this, inP);
-    }
 
-    log(this.health, inP.health);
-  }
   atkTwo(inP) {
     if (this.nowRooted()) {
       console.log('I cant move!')
@@ -98,7 +125,7 @@ class Player {
       console.log('I am BURNIN!🔥')
     }
   }
-  nowRooted(inP) {
+  nowRooted() {
     if (this.isStopped) {
       this.isStopped = !this.isStopped;
       return true;
@@ -106,5 +133,8 @@ class Player {
       return false;
     }
   }
+}
 
+export {
+  Player
 }
