@@ -8,7 +8,9 @@ import {
   normalAttack
 } from './abilities.js';
 
+
 class Player {
+
   constructor(myName, myClass, isP1) {
     this.name = myName; //js-p{num}-name
     this.class = myClass;
@@ -45,7 +47,6 @@ class Player {
     this.isP1 = isP1 || false;
     // this.potions = 0;
   }
-
   atkTwo(inP) {
     if (this.nowRooted()) {
       console.log('I cant move!')
