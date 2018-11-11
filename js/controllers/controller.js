@@ -25,9 +25,9 @@ game.init(updateDOM)
 getAll('.normal-attack').forEach(function (button) {
   button.addEventListener('click', function (normalAttackButton) {
     if (normalAttackButton.target.closest('#player-one-section')) {
-      game.normalAttack('p1', 'p2', updateDOM);
+      game.normalAttack('p1', updateDOM); //Only pass in the attacker
     } else if (normalAttackButton.target.closest('#player-two-section')) {
-      game.normalAttack('p2', 'p1', updateDOM);
+      game.normalAttack('p2', updateDOM);
     }
   });
 });
