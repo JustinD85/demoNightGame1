@@ -6,15 +6,16 @@ import {
   Player
 } from '../models/player.js';
 
-export {
-  Game
-}
+
+// export {
+//   Game
+// }
 
 /**
  * Creates a new Game
  * @class Game
  */
-class Game {
+export class Game {
   constructor() {
     this.players = [];
   }
@@ -43,10 +44,14 @@ class Game {
    * @param {JSON} callback - function whose first argument is a JSON array of updated Objects
    */
   normalAttack(attacker, callback) {
+    const playerOne = this.players[0]
+    const playerTwo = this.players[1]
     if (attacker === 'p1') {
-      this.players[1].health -= this.players[0].dmg
+      playerOne.normalAttack(playerTwo);
+      playerOne.ailments();
     } else {
-      this.players[0].health -= this.players[1].dmg
+      playerTwo.normalAttack(playerOne);
+      playerTwo.ailments();
     }
     callback(JSON.stringify(this.players));
   }
