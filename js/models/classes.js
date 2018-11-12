@@ -23,10 +23,12 @@ export function mage() {
 //Example
 export function warrior() {
   return {
-    health: 100,
-    mana: 30,
-    energy: 80,
-    normalAttack: abilities.normalAttack,
+    health: 200,
+    energy: 120,
+    mana: 75,
+    normalAttack: abilities.wildSwing,
+    heavyAttack: abilities.leachStrike,
+    specialAttack: abilities.berserker,
     equipment: {
       hand: equip.basicSword
     },
