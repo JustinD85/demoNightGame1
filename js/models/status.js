@@ -4,7 +4,9 @@
  */
 export const effectsList = {
   isRooted: false,
-  isBurned: true
+  isBurned: true,
+  isEnraged: false,
+  ragePoints: 0
 }
 
 //These will be checks for damage that can happen to a class
