@@ -1,5 +1,5 @@
 //Idk if you want all DOM stuff in one file or many, change it to make sense to you
-
+console.log('hey')
 import {
   Game
 } from '../server/game.js';
@@ -15,7 +15,7 @@ import {
 You can view the methods available to you in game from looking at the game.js file */
 const game = new Game();
 game.createPlayer('duy', 'mage', true);
-game.createPlayer('gabe', 'warrior');
+game.createPlayer('gabe', 'mage');
 game.init(updateDOM)
 /**
  * EXAMPLE FOR BUTTON, PLEASE CHANGE TO MAKE SENSE TO YOU.

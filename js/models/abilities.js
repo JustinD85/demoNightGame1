@@ -2,7 +2,7 @@ import * as check from '../models/status.js';
 
 export function normalAttack(attackee) {
   const attacker = this;
-  if (attacker.statusEffets.isRooted) {
+  if (attacker.statusEffects.isRooted) {
     attacker.statusEffects.isRooted = !attacker.statusEffets.isRooted;
     console.log('I cant move!')
   } else {
@@ -23,7 +23,36 @@ export function 'nameOfAbility'(attackee){
   }
 }
 */
+export function wildSwing(attackee) {
+  this.ragePoints++
+  attackee.health -= 10;
+  this.energy -= 10
+  if(this.ragePoints === 3) {
+    this.isEnraged = true;
+    attackee.health -= 20;
+    this.energy -= 15;
+  } else if (this.ragePoints === 4) {
+    this.ragePoints = 0;
+    this.isEnraged = false;
+  }
+}
 
+export function leachStrike(attackee) {
+  attackee.health -= 25;
+  this.energy -= 45;
+  this.health += 25;
+}
+
+export function berserker(attackee) {
+  const rndDmg = Math.floor(Math.random() * 100);
+  attackee.health = rndDmg;
+  this.energy -= 90;
+  if(this.isEnraged === true) {
+    attackee.health = rndDmg + 25;
+    this.isEnraged = false;
+    this.energy -= 90;
+  }
+}
 
 export function heavyAttack(inP) {
   if (this.isRooted()) {
@@ -100,3 +129,5 @@ export function abilityDefendSelf() {
     this.isBurned(this);
   }
 }
+
+//Warrior type ablilities
