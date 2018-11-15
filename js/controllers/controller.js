@@ -1,5 +1,5 @@
 //Idk if you want all DOM stuff in one file or many, change it to make sense to you
-console.log('hey')
+console.log('hey');
 import {
   Game
 } from '../server/game.js';

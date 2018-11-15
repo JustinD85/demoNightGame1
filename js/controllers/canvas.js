@@ -6,22 +6,77 @@ var projY = 100; //change to dynamic
 var direction = [0, 0];
 const p1 = 'player1';
 const p2 = 'player2';
-
+var animationFrameTracker = 0;
+// var img1 = new Image();
+// var img2 = new Image();
+var myPlayers = [];
 if (canv.getContext) {
-  var myRect = [];
-  myRect.push(new makePlayer(p1));
-  myRect.push(new makePlayer(p2));
+  buildInitialPlayerAnimations();
+  requestAnimationFrame(runGameAnimation);
+}
 
-  for (var i in myRect) {
-    oRec = myRect[i];
-    ctx.fillStyle = oRec.fill;
-    ctx.fillRect(oRec.x, oRec.y, oRec.w, oRec.h);
+function buildInitialPlayerAnimations() {
+  
+  myPlayers.push(new makePlayer(p1));
+  myPlayers.push(new makePlayer(p2));
+
+  var img1 = document.createElement('img'),
+    img2 = document.createElement('img')
+  count = 2;
+
+  /// image loading is async, make sure they are loaded
+  img1.onload = img2.onload = function () {
+    count--;
+    if (count === 0) drawImages();
+  }
+  img1.src = myPlayers[0].rest[0];
+  img2.src = myPlayers[1].img;
+
+  /// when loaded, draw them somewhere on the canvas
+  function drawImages() {
+    ctx.drawImage(img1, myPlayers[0].x, myPlayers[0].y, myPlayers[0].w, myPlayers[0].h);
+    ctx.drawImage(img2, myPlayers[1].x, myPlayers[1].y, myPlayers[1].w, myPlayers[1].h);
   }
 }
-const player1animation = myRect[0];
-const player2animation = myRect[1];
 
+function runGameAnimation() {
+  var img1 = document.createElement('img'),
+    img2 = document.createElement('img')
+  count = 2;
+
+  /// image loading is async, make sure they are loaded
+  img1.onload = img2.onload = function () {
+    count--;
+    if (count === 0) drawImages();
+  }
+  if(myPlayers.restTracker === 0) {
+    img1.src = myPlayers[0].rest[0];
+    myPlayers.restTracker = 1;
+  } else {
+    img1.src = myPlayers[0].rest[1];
+    myPlayers.restTracker = 0;
+  }
+  
+  img2.src = myPlayers[1].img;
+
+  /// when loaded, draw them somewhere on the canvas
+  function drawImages() {
+    ctx.drawImage(img1, myPlayers[0].x, myPlayers[0].y, myPlayers[0].w, myPlayers[0].h);
+    ctx.drawImage(img2, myPlayers[1].x, myPlayers[1].y, myPlayers[1].w, myPlayers[1].h);
+  }
+  // requestAnimationFrame(runGameAnimation);
+}
+
+// const player1animation = myRect[0];
+// const player2animation = myRect[1];
+
+// var img = new Image();
+// img.onload = function () {
+//   ctx.drawImage(img, 0, 0, 50, 50);
+// }
+// img.src = "imgs/characterAnimations/hidden-menu.svg"
 // example casts
+
 // playerCast(player1animation, player2animation);
 // playerCast(player2animation, player1animation);
 
@@ -32,7 +87,7 @@ function playerCast(attacker, defender) {
   direction = attacker.direction;
   projEndX = attacker.endX;
   requestAnimationFrame(castProjectile);
-
+  
 }
 
 function castProjectile() {
@@ -60,7 +115,7 @@ function playerWeakAttack(attacker, defender) {
 }
 
 function castWeakAttack() {
-
+  
   ctx.clearRect(attackerStartX, attackerStartY, 50, 50);
   attackerStartX = attackerStartX + attackerDirection[0] + attackerSpeed;
   if (attackerPlayer === 'player1') {
@@ -68,7 +123,7 @@ function castWeakAttack() {
   } else {
     ctx.fillStyle = 'green';
   }
-
+  
   ctx.fillRect(attackerStartX, attackerStartY, 50, 50);
   if (attackerPlayer === 'player1' && attackerStartX > attackerEndX) {
     ctx.clearRect(attackerStartX, attackerStartY, 50, 50);
@@ -85,7 +140,7 @@ function castWeakAttack() {
 }
 
 // example weak attack
-playerWeakAttack(player1animation, player2animation);
+// playerWeakAttack(player1animation, player2animation);
 
 
 
@@ -109,4 +164,3 @@ playerWeakAttack(player1animation, player2animation);
 //     return direction;
 //   }
 // }
- 
