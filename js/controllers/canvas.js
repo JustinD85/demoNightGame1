@@ -2,29 +2,32 @@ const canv = document.querySelector('canvas');
 let ctx = canv.getContext('2d');
 const canvWidth = canv.width;
 const canvHeight = canv.height;
-let curFrame = 0;
-const frameCount = 8;
+// let curFrame = 0;
+// const frameCount = 8;
 
-var spriteWidth = 864;
-var spriteHeight = 280;
 
-var rows = 2;
-var cols = 8;
+// var spriteWidth = 864;
+// var spriteHeight = 280;
 
-var width = spriteWidth / cols;
-var height = spriteHeight / rows;
+// var rows = 2;
+// var cols = 8;
+
+// var width = spriteWidth / cols;
+// var height = spriteHeight / rows;
 
 // var projX = 200;
-var projY = 100; //change to dynamic
-var direction = [0, 0];
+// var projY = 100; //change to dynamic
+// var direction = [0, 0];
 const p1 = 'player1';
 const p2 = 'player2';
-var animationFrameTracker = 0;
+
 // var img1 = new Image();
 // var img2 = new Image();
 var myPlayers = [];
-
-window.addEventListener("load", buildInitialPlayerAnimations);
+var characterPlayer1 = new Image();
+var characterPlayer2 = new Image();
+var projectileAnimation = new Image();
+window.addEventListener("load", buildInitialPlayerAnimations);// change to when they pick characters
 
 function buildInitialPlayerAnimations() {
   myPlayers.push(new makePlayer(p1));
@@ -32,20 +35,53 @@ function buildInitialPlayerAnimations() {
 }
 
 function runGameAnimation() {
-  updateFrame();
-  var characterPlayer1 = new Image();
-  var characterPlayer2 = new Image();
+  // if (arguments.length === 1) {
+   
+  // }
+  updatePlayer1Frame();
+  updatePlayer2Frame();
   characterPlayer1.src = myPlayers[0].rest;
   characterPlayer2.src = myPlayers[0].rest;
-  ctx.drawImage(characterPlayer1, srcX, srcY, width, height, myPlayers[0].x, myPlayers[0].y, myPlayers[0].w, myPlayers[0].h);
-  ctx.drawImage(characterPlayer2, srcX, 140, width, height, myPlayers[1].x, myPlayers[1].y, myPlayers[1].w, myPlayers[1].h);
+  ctx.clearRect(0, 0, canvWidth, canvHeight);
+  if (myPlayers[0].currentProjectile) {
+    updateProjectileFrame(myPlayers[0]);
+    updateProjectilePosition(myPlayers[0]);
+    projectileAnimation.src = myPlayers[0].projectile;
+    ctx.drawImage(projectileAnimation, myPlayers[0].projectileSrcX, myPlayers[0].projectileSrcY, myPlayers[0].projectileSpriteWidth, myPlayers[0].projectileSpriteHeight, myPlayers[0].projectileStartX, myPlayers[0].projectileStartY, 10, 10);
+  }
+  if (myPlayers[1].currentProjectile) {
+    updateProjectileFrame();
+    updateProjectilePosition();
+    projectileAnimation.src = myPlayers[0].projectile;
+    ctx.drawImage(projectileAnimation, myPlayers[0].projectileSrcX, myPlayers[0].projectileSrcY, myPlayers[0].projectileSpriteWidth, myPlayers[0].projectileSpriteHeight, myPlayers[0].projectileStartX, myPlayers[0].projectileStartY, 10, 10);
+  }
+  ctx.drawImage(characterPlayer1, myPlayers[0].restSrcX, myPlayers[0].restSrcY, myPlayers[0].restSpriteWidth, myPlayers[0].restSpriteHeight, myPlayers[0].x, myPlayers[0].y, myPlayers[0].w, myPlayers[0].h);
+  ctx.drawImage(characterPlayer2, myPlayers[1].restSrcX, myPlayers[1].restSrcY, myPlayers[1].restSpriteWidth, myPlayers[1].restSpriteHeight, myPlayers[1].x, myPlayers[1].y, myPlayers[1].w, myPlayers[1].h);
 }
 
-function updateFrame() {
-  ctx.clearRect(0, 0, canvWidth, canvHeight);
-  curFrame = ++curFrame % frameCount;
-  srcX = curFrame * width;
-  srcY = 0;
+function updatePlayer1Frame() {
+  myPlayers[0].restCurrentFrame = ++myPlayers[0].restCurrentFrame % myPlayers[0].restFrameCount;
+  myPlayers[0].restSrcX = myPlayers[0].restCurrentFrame * (myPlayers[0].restSpriteWidth);
+  myPlayers[0].restSrcY = 0;
+}
+
+function updatePlayer2Frame() {
+  myPlayers[1].restCurrentFrame = ++myPlayers[1].restCurrentFrame % myPlayers[1].restFrameCount;
+  myPlayers[1].restSrcX = myPlayers[1].restCurrentFrame * (myPlayers[1].restSpriteWidth);
+  myPlayers[1].restSrcY = 140;
+}
+
+function updateProjectileFrame() {
+  myPlayers[0].projectileCurrentFrame = ++myPlayers[0].projectileCurrentFrame % myPlayers[0].projectileFrameCount;
+  myPlayers[0].projectileSrcX = myPlayers[0].projectileCurrentFrame * (myPlayers[0].projectileSpriteWidth);
+  myPlayers[0].projectileSrcY = 0;
+}
+
+function updateProjectilePosition() {
+  myPlayers[0].projectileStartX = myPlayers[0].projectileStartX + 10;
+  if (myPlayers[0].projectileStartX > myPlayers[0].projectileEndX) {
+    myPlayers[0].currentProjectile = false;
+  }
 }
 
 setInterval(runGameAnimation, 100);
