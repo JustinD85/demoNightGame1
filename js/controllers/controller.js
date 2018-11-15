@@ -25,6 +25,7 @@ game.init(updateDOM)
 getAll('.normal-attack').forEach(function (button) {
   button.addEventListener('click', function (normalAttackButton) {
     if (normalAttackButton.target.closest('#player-one-section')) {
+      myPlayers[0].createProjectile(myPlayers[1]);
       game.normalAttack('p1', updateDOM); //Only pass in the attacker
     } else if (normalAttackButton.target.closest('#player-two-section')) {
       game.normalAttack('p2', updateDOM);
