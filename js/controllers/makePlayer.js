@@ -11,7 +11,6 @@ class makePlayer {
 			this.restSpriteHeight = 280/2;
 			this.restSrcX = 0;
 			this.restSrcY = 0;
-
 			this.projectile = 'imgs/characterAnimations/coin-sprite-animation.png';
 			this.projectileFrameCount = 10;
 			this.projectileCurrentFrame = 0;
@@ -19,8 +18,10 @@ class makePlayer {
 			this.projectileSpriteHeight = 100;
 			this.projectileSrcX = 0;
 			this.projectileSrcY = 0;
-
-		} else {
+			this.projectileWidth = 10;
+			this.projectileHeight = 10;
+			this.projectileDirection = 1;
+			} else {
 			this.player = 'player2';
 			this.x = 230;
 
@@ -39,6 +40,9 @@ class makePlayer {
 			this.projectileSpriteHeight = 100;
 			this.projectileSrcX = 0;
 			this.projectileSrcY = 0;
+			this.projectileWidth = 10;
+			this.projectileHeight = 10;
+			this.projectileDirection = -1;
 
 		}
 		this.y = 70;
@@ -48,12 +52,16 @@ class makePlayer {
 		this.projectileStartY = 0;
 		this.projectileEndX = 0;
 		this.projectileEndY = 0;
-		this.direction = [];
-		this.speed = 0;
 		this.currentProjectile = false;
-		
+		this.currentWeakAtk = false;
+		this.currentHeavyAtk = false;
 	}
 	
+	updatePlayerFrame() {
+		this.restCurrentFrame = ++this.restCurrentFrame % this.restFrameCount;
+		this.restSrcX = this.restCurrentFrame * (this.restSpriteWidth);
+	}
+
 	createProjectile(defender) {
 		if (this.player === 'player1') {
 			this.currentProjectile = true;
@@ -61,7 +69,6 @@ class makePlayer {
 			this.projectileStartY = this.y + (this.h/2);
 			this.projectileEndX = defender.x - 15;
 			this.projectileEndY = this.projectileStartY;
-			this.direction = [1, 0]
 			
 		} else {
 			this.currentProjectile = true;
@@ -69,7 +76,19 @@ class makePlayer {
 			this.projectileStartY = this.y + (this.h/2);
 			this.projectileEndX = defender.x + defender.w;
 			this.projectileEndY = this.projectileStartY;
-			this.direction = [-1, 0]
+		}
+	}
+
+	updateProjectileFrame() {
+		this.projectileCurrentFrame = ++this.projectileCurrentFrame % this.projectileFrameCount;
+		this.projectileSrcX = this.projectileCurrentFrame * (this.projectileSpriteWidth);
+		this.projectileSrcY = 0;
+	}
+
+	updateProjectilePosition() {
+		this.projectileStartX = this.projectileStartX + (10 * this.projectileDirection);
+		if ((this.projectileDirection === 1 && (this.projectileStartX > this.projectileEndX)) || (this.projectileDirection === -1 && (this.projectileStartX < this.projectileEndX))) {
+			this.currentProjectile = false;
 		}
 	}
 	

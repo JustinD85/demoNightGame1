@@ -2,30 +2,12 @@ const canv = document.querySelector('canvas');
 let ctx = canv.getContext('2d');
 const canvWidth = canv.width;
 const canvHeight = canv.height;
-// let curFrame = 0;
-// const frameCount = 8;
 
-
-// var spriteWidth = 864;
-// var spriteHeight = 280;
-
-// var rows = 2;
-// var cols = 8;
-
-// var width = spriteWidth / cols;
-// var height = spriteHeight / rows;
-
-// var projX = 200;
-// var projY = 100; //change to dynamic
-// var direction = [0, 0];
 const p1 = 'player1';
 const p2 = 'player2';
 
-// var img1 = new Image();
-// var img2 = new Image();
 var myPlayers = [];
-var characterPlayer1 = new Image();
-var characterPlayer2 = new Image();
+var characterPlayer = new Image();
 var projectileAnimation = new Image();
 window.addEventListener("load", buildInitialPlayerAnimations);// change to when they pick characters
 
@@ -35,148 +17,38 @@ function buildInitialPlayerAnimations() {
 }
 
 function runGameAnimation() {
-  // if (arguments.length === 1) {
-   
-  // }
-  updatePlayer1Frame();
-  updatePlayer2Frame();
-  characterPlayer1.src = myPlayers[0].rest;
-  characterPlayer2.src = myPlayers[0].rest;
   ctx.clearRect(0, 0, canvWidth, canvHeight);
-  if (myPlayers[0].currentProjectile) {
-    updateProjectileFrame(myPlayers[0]);
-    updateProjectilePosition(myPlayers[0]);
-    projectileAnimation.src = myPlayers[0].projectile;
-    ctx.drawImage(projectileAnimation, myPlayers[0].projectileSrcX, myPlayers[0].projectileSrcY, myPlayers[0].projectileSpriteWidth, myPlayers[0].projectileSpriteHeight, myPlayers[0].projectileStartX, myPlayers[0].projectileStartY, 10, 10);
-  }
-  if (myPlayers[1].currentProjectile) {
-    updateProjectileFrame();
-    updateProjectilePosition();
-    projectileAnimation.src = myPlayers[0].projectile;
-    ctx.drawImage(projectileAnimation, myPlayers[0].projectileSrcX, myPlayers[0].projectileSrcY, myPlayers[0].projectileSpriteWidth, myPlayers[0].projectileSpriteHeight, myPlayers[0].projectileStartX, myPlayers[0].projectileStartY, 10, 10);
-  }
-  ctx.drawImage(characterPlayer1, myPlayers[0].restSrcX, myPlayers[0].restSrcY, myPlayers[0].restSpriteWidth, myPlayers[0].restSpriteHeight, myPlayers[0].x, myPlayers[0].y, myPlayers[0].w, myPlayers[0].h);
-  ctx.drawImage(characterPlayer2, myPlayers[1].restSrcX, myPlayers[1].restSrcY, myPlayers[1].restSpriteWidth, myPlayers[1].restSpriteHeight, myPlayers[1].x, myPlayers[1].y, myPlayers[1].w, myPlayers[1].h);
-}
-
-function updatePlayer1Frame() {
-  myPlayers[0].restCurrentFrame = ++myPlayers[0].restCurrentFrame % myPlayers[0].restFrameCount;
-  myPlayers[0].restSrcX = myPlayers[0].restCurrentFrame * (myPlayers[0].restSpriteWidth);
-  myPlayers[0].restSrcY = 0;
-}
-
-function updatePlayer2Frame() {
-  myPlayers[1].restCurrentFrame = ++myPlayers[1].restCurrentFrame % myPlayers[1].restFrameCount;
-  myPlayers[1].restSrcX = myPlayers[1].restCurrentFrame * (myPlayers[1].restSpriteWidth);
-  myPlayers[1].restSrcY = 140;
-}
-
-function updateProjectileFrame() {
-  myPlayers[0].projectileCurrentFrame = ++myPlayers[0].projectileCurrentFrame % myPlayers[0].projectileFrameCount;
-  myPlayers[0].projectileSrcX = myPlayers[0].projectileCurrentFrame * (myPlayers[0].projectileSpriteWidth);
-  myPlayers[0].projectileSrcY = 0;
-}
-
-function updateProjectilePosition() {
-  myPlayers[0].projectileStartX = myPlayers[0].projectileStartX + 10;
-  if (myPlayers[0].projectileStartX > myPlayers[0].projectileEndX) {
-    myPlayers[0].currentProjectile = false;
-  }
+  myPlayers.forEach(function(player) {
+    if (player.currentProjectile) {
+      player.updateProjectileFrame();
+      player.updateProjectilePosition();
+      projectileAnimation.src = player.projectile;
+      ctx.drawImage(projectileAnimation,
+                    player.projectileSrcX,
+                    player.projectileSrcY,
+                    player.projectileSpriteWidth,
+                    player.projectileSpriteHeight,
+                    player.projectileStartX,
+                    player.projectileStartY,
+                    player.projectileWidth,
+                    player.projectileHeight);
+    }
+    player.updatePlayerFrame();
+    characterPlayer.src = player.rest;
+    ctx.drawImage(characterPlayer,
+                  player.restSrcX,
+                  player.restSrcY,
+                  player.restSpriteWidth,
+                  player.restSpriteHeight,
+                  player.x,
+                  player.y,
+                  player.w,
+                  player.h);
+  })
 }
 
 setInterval(runGameAnimation, 100);
-// if (canv.getContext) {
-//   buildInitialPlayerAnimations();
-//   requestAnimationFrame(runGameAnimation);
-// }
 
-// function buildInitialPlayerAnimations() {
-  
-//   myPlayers.push(new makePlayer(p1));
-//   myPlayers.push(new makePlayer(p2));
-
-//   var img1 = document.createElement('img'),
-//     img2 = document.createElement('img')
-//   count = 2;
-
-//   /// image loading is async, make sure they are loaded
-//   img1.onload = img2.onload = function () {
-//     count--;
-//     if (count === 0) drawImages();
-//   }
-//   img1.src = myPlayers[0].rest[0];
-//   img2.src = myPlayers[1].img;
-
-//   /// when loaded, draw them somewhere on the canvas
-//   function drawImages() {
-//     ctx.drawImage(img1, myPlayers[0].x, myPlayers[0].y, myPlayers[0].w, myPlayers[0].h);
-//     ctx.drawImage(img2, myPlayers[1].x, myPlayers[1].y, myPlayers[1].w, myPlayers[1].h);
-//   }
-// }
-
-// function runGameAnimation() {
-//   var img1 = document.createElement('img'),
-//     img2 = document.createElement('img')
-//   count = 2;
-
-//   /// image loading is async, make sure they are loaded
-//   img1.onload = img2.onload = function () {
-//     count--;
-//     if (count === 0) drawImages();
-//   }
-//   if(myPlayers.restTracker === 0) {
-//     img1.src = myPlayers[0].rest[0];
-//     myPlayers.restTracker = 1;
-//   } else {
-//     img1.src = myPlayers[0].rest[1];
-//     myPlayers.restTracker = 0;
-//   }
-  
-//   img2.src = myPlayers[1].img;
-
-//   /// when loaded, draw them somewhere on the canvas
-//   function drawImages() {
-//     ctx.drawImage(img1, myPlayers[0].x, myPlayers[0].y, myPlayers[0].w, myPlayers[0].h);
-//     ctx.drawImage(img2, myPlayers[1].x, myPlayers[1].y, myPlayers[1].w, myPlayers[1].h);
-//   }
-//   // requestAnimationFrame(runGameAnimation);
-// }
-
-// // const player1animation = myRect[0];
-// // const player2animation = myRect[1];
-
-// // var img = new Image();
-// // img.onload = function () {
-// //   ctx.drawImage(img, 0, 0, 50, 50);
-// // }
-// // img.src = "imgs/characterAnimations/hidden-menu.svg"
-// // example casts
-
-// // playerCast(player1animation, player2animation);
-// // playerCast(player2animation, player1animation);
-
-
-// function playerCast(attacker, defender) {
-//   attacker.createProjectile(defender);
-//   projX = attacker.startX;
-//   direction = attacker.direction;
-//   projEndX = attacker.endX;
-//   requestAnimationFrame(castProjectile);
-  
-// }
-
-// function castProjectile() {
-//   ctx.clearRect(projX, projY, 15, 15);
-//   projX = projX + direction[0];
-//   ctx.fillStyle = 'red';
-//   ctx.fillRect(projX, projY, 15, 15);
-//   if (projX === projEndX) {
-//     ctx.clearRect(projX, projY, 15, 15);
-//     return
-//   } else {
-//     requestAnimationFrame(castProjectile);
-//   }
-// }
 
 // function playerWeakAttack(attacker, defender) {
 //   attacker.weakMeleeAttack(defender);
