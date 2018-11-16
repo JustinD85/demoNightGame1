@@ -7,10 +7,6 @@ import {
 } from '../models/player.js';
 
 
-// export {
-//   Game
-// }
-
 /**
  * Creates a new Game
  * @class Game
@@ -53,6 +49,30 @@ export class Game {
       playerTwo.normalAttack(playerOne);
       playerTwo.ailments();
     }
+    callback(JSON.stringify(this.players));
+  }
+  heavyAttack(attacker, callback) {
+    const playerOne = this.players[0]
+    const playerTwo = this.players[1]
+    if (attacker === 'p1') {
+      playerOne.heavyAttack(playerTwo);
+    } else {
+      playerTwo.heavyAttack(playerOne);
+    }
+    playerOne.ailments();
+    playerTwo.ailments();
+    callback(JSON.stringify(this.players));
+  }
+  specialAttack(attacker, callback) {
+    const playerOne = this.players[0]
+    const playerTwo = this.players[1]
+    if (attacker === 'p1') {
+      playerOne.specialAttack(playerTwo);
+    } else {
+      playerTwo.specialAttack(playerOne);
+    }
+    playerOne.ailments();
+    playerTwo.ailments();
     callback(JSON.stringify(this.players));
   }
 }

@@ -4,7 +4,7 @@
  */
 export const effectsList = {
   isRooted: false,
-  isBurned: true,
+  isBurned: false,
   isEnraged: false,
   ragePoints: 0
 }
@@ -18,7 +18,7 @@ export const effectsList = {
 //functions are called in the game.js
 export function checks() {
   const player = this;
-   shouldBurn(player);
+  shouldBurn(player);
 }
 
 
@@ -26,9 +26,10 @@ export function checks() {
 //These are the effects of each effect
 //These functions are not exported, you use these in the functions above 
 //To check for w/e effects you give characters
- function shouldBurn(player) {
-  if (player.statusEffects.isBurned) {
+function shouldBurn(player) {
+  if (player.isBurned) {
     player.health -= 10;
+    console.log(player)
     console.log('I am BURNIN!🔥')
   }
 }

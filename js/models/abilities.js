@@ -27,7 +27,7 @@ export function wildSwing(attackee) {
   this.ragePoints++
   attackee.health -= 10;
   this.energy -= 10
-  if(this.ragePoints === 3) {
+  if (this.ragePoints === 3) {
     this.isEnraged = true;
     attackee.health -= 20;
     this.energy -= 15;
@@ -44,49 +44,35 @@ export function leachStrike(attackee) {
 }
 
 export function berserker(attackee) {
-  const rndDmg = Math.floor(Math.random() * 100);
-  attackee.health = rndDmg;
-  this.energy -= 90;
-  if(this.isEnraged === true) {
-    attackee.health = rndDmg + 25;
+  const rndDmg = 0;
+  if (this.isEnraged) {
+    rndDmg = Math.floor(Math.random() * 100);
+    attackee.health -= rndDmg;
+    this.energy -= 90;
+  } else {
+    attackee.health -= rndDmg + 25;
     this.isEnraged = false;
     this.energy -= 90;
   }
 }
 
 export function heavyAttack(inP) {
-  if (this.isRooted()) {
-    console.log('I cant move!')
-  }
-  if (this.class !== 'warrior') {
-    return 'I cant use this'
-  }
-  if (this.class === 'warrior') {
-    inP.health -= 20;
-    this.energy -= 20;
-    this.mana -= 10;
-  }
+  inP.health -= 20;
+  this.energy -= 20;
+  this.mana -= 10;
   this.isBurned(this);
 }
 
-export function spellFire(inP, spell) {
-  if (this.isRooted()) {
-    console.log('I cant move!')
-  }
-  if (this.class !== 'mage' && spell === 'fire') {
-    return 'I cant use this'
-  }
-  if (this.class === 'mage' && spell === 'fire') {
+export function spellFire(inP) {
     inP.health -= 15;
-    inp.burned = true;
+    inP.isBurned = true;
     this.energy -= 10;
     this.mana -= 15;
-  } else if (spell === 'hydro') {
-    inP.burned = false;
+}
+export function spellHydro(inP) {
+    inP.isBurned = false;
     this.energy -= 10;
     this.mana -= 10;
-  }
-  this.isBurned(this);
 }
 
 export function spellVine(inP, spell) {
@@ -106,28 +92,20 @@ export function spellVine(inP, spell) {
 }
 
 export function spellHealSelf() {
-  if (this.isRooted()) {
-    console.log('I cant move!')
+  this.potions++
+  if (this.potions <= 5) {
+    this.health += 5;
+    this.energy += 10;
+    this.mana -= 10;
+    this.isBurned(this);
   } else {
-    this.potions++
-    if (this.potions <= 5) {
-      this.health += 5;
-      this.energy += 10;
-      this.mana -= 10;
-      this.isBurned(this);
-    } else {
-      return 'no heals for me'
-    }
+    return 'no heals for me'
   }
+
 }
 export function abilityDefendSelf() {
-  if (this.isRooted()) {
-    console.log('I cant move!')
-  } else {
     this.health += 10;
     this.energy -= 15;
-    this.isBurned(this);
-  }
 }
 
 //Warrior type ablilities

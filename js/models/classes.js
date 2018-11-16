@@ -9,10 +9,15 @@ import {
 //Example
 export function mage() {
   return {
-    health: 50,
+    health: 100,
+    maxHealth:100,
     mana: 90,
+    maxMana: 90,
+    maxEnergy:60,
     energy: 60,
-    normalAttack: abilities.normalAttack,
+    normalAttack: abilities.spellFire,
+    heavyAttack: abilities.abilityDefendSelf,
+    specialAttack: abilities.spellHealSelf,
     equipment: {
       hand: equip.basicSword
     },
@@ -24,15 +29,18 @@ export function mage() {
 export function warrior() {
   return {
     health: 200,
+    maxHealth: 200,
     energy: 120,
+    maxEnergy: 120,
     mana: 75,
+    maxMana:75,
     normalAttack: abilities.wildSwing,
     heavyAttack: abilities.leachStrike,
     specialAttack: abilities.berserker,
     equipment: {
       hand: equip.basicSword
     },
-    statusEffects: effectsList,
+    ...effectsList,
     ailments: checks
   }
 }
