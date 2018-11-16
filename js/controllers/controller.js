@@ -28,6 +28,7 @@ getAll('.normal-attack').forEach(function (button) {
       myPlayers[0].createProjectile(myPlayers[1]);
       game.normalAttack('p1', updateDOM); //Only pass in the attacker
     } else if (normalAttackButton.target.closest('#player-two-section')) {
+      myPlayers[1].createProjectile(myPlayers[0]);
       game.normalAttack('p2', updateDOM);
     }
   });
