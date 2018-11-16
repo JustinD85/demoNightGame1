@@ -1,10 +1,7 @@
-const canv = document.querySelector('canvas');
-let ctx = canv.getContext('2d');
-const canvWidth = canv.width;
-const canvHeight = canv.height;
-
-const p1 = 'player1';
-const p2 = 'player2';
+let canv;
+let ctx;
+let canvWidth;
+let canvHeight;
 
 var myPlayers = [];
 var characterPlayer = new Image();
@@ -12,6 +9,13 @@ var projectileAnimation = new Image();
 window.addEventListener("load", buildInitialPlayerAnimations);// change to when they pick characters
 
 function buildInitialPlayerAnimations() {
+  canv = document.querySelector('canvas');
+  ctx = canv.getContext('2d');
+  canvWidth = canv.width;
+  canvHeight = canv.height;
+
+  const p1 = 'player1';
+  const p2 = 'player2';
   myPlayers.push(new makePlayer(p1));
   myPlayers.push(new makePlayer(p2));
 }
@@ -20,7 +24,6 @@ function runGameAnimation() {
   ctx.clearRect(0, 0, canvWidth, canvHeight);
   myPlayers.forEach(function(player) {
     if (player.currentProjectile) {
-      player.updateProjectileFrame();
       player.updateProjectilePosition();
       projectileAnimation.src = player.projectile;
       ctx.drawImage(projectileAnimation,
@@ -33,7 +36,11 @@ function runGameAnimation() {
                     player.projectileWidth,
                     player.projectileHeight);
     }
-    player.updatePlayerFrame();
+    if (player.currentWeakAtk) {
+      player.updatePlayerWeakAtkPosition();
+        
+    }
+    player.updatePlayerRestFrame();
     characterPlayer.src = player.rest;
     ctx.drawImage(characterPlayer,
                   player.restSrcX,
