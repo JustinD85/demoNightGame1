@@ -34,6 +34,30 @@ getAll('.normal-attack').forEach(function (button) {
   });
 });
 
+getAll('.heavy-attack').forEach(function (button) {
+  button.addEventListener('click', function (heavyAttackButton) {
+    if (heavyAttackButton.target.closest('#player-one-section')) {
+      myPlayers[0].createProjectile(myPlayers[1]);
+      game.heavyAttack('p1', updateDOM); //Only pass in the attacker
+    } else if (heavyAttackButton.target.closest('#player-two-section')) {
+      myPlayers[1].createProjectile(myPlayers[0]);
+      game.heavyAttack('p2', updateDOM);
+    }
+  });
+});
+
+getAll('.special-attack').forEach(function (button) {
+  button.addEventListener('click', function (specialAttackButton) {
+    if (specialAttackButton.target.closest('#player-one-section')) {
+      myPlayers[0].createProjectile(myPlayers[1]);
+      game.specialAttack('p1', updateDOM); //Only pass in the attacker
+    } else if (specialAttackButton.target.closest('#player-two-section')) {
+      myPlayers[1].createProjectile(myPlayers[0]);
+      game.specialAttack('p2', updateDOM);
+    }
+  });
+});
+
 /*EXAMPLE CALLBACK FUNCTION */
 function updateDOM(updatedPlayersAsJSON) {
   const playerObjectsInArray = JSON.parse(updatedPlayersAsJSON);
