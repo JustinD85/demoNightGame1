@@ -1,0 +1,205 @@
+body {
+	background-color: blue;
+}
+
+.headw {
+	left: 40px;
+	z-index: 1;
+	width: 100px;
+	animation: head 2s linear infinite;
+	position: absolute;
+}
+
+.bodyw {
+	left: 55px;
+	width: 80px;
+	animation: body 2s linear infinite;
+	position: absolute;
+	
+}
+
+.feetw {
+	top: 125px;
+	left: 75PX;
+	width: 45px;
+	position: absolute;
+}
+
+.weaponw {
+	left: 100px;
+	width: 90px;
+	position: absolute;
+	animation: body 2s infinite;
+}
+
+
+div {
+	margin: 20px;
+	position: relative;
+	height: 150px;
+}
+
+
+@keyframes head {
+	0% {
+		transform: rotate(0deg); top: 0px;
+	}
+	74% {
+		top: 5px;
+	}
+	75% {
+		transform: rotate(2.5deg);
+	}
+	100% {
+		transform: rotate(0deg); top: 0px;
+	}
+}
+
+@keyframes body {
+	0% {
+		top: 60px;
+	}
+	75% {
+		top: 65px;
+	}
+	100% {
+		top: 60px;
+	}
+}
+
+@keyframes weapon {
+	0% {
+		top: 30px;
+	}
+	75% {
+		top: 35px;
+	}
+	100% {
+		top: 30px;
+	}
+}
+
+/* hurt animation keyframes */ 
+
+@keyframes headh {
+	0% {
+		transform: rotate(0deg); top: 0px;
+	}
+	74% {
+		top: 5px;
+	}
+	75% {
+		transform: rotate(2.5deg);
+	}
+	100% {
+		transform: rotate(0deg); top: 0px;
+	}
+}
+
+@keyframes bodyh {
+	0% {
+		left: 60px;
+	}
+	75% {
+		top: 65px;
+	}
+	100% {
+		top: 60px;
+	}
+}
+
+@keyframes weaponh {
+	0% {
+		top: 30px;
+	}
+	75% {
+		top: 35px;
+	}
+	100% {
+		top: 30px;
+	}
+}
+
+/* normal animation keyframes */ 
+
+@keyframes headh {
+	0% {
+		transform: rotate(0deg); top: 0px;
+	}
+	74% {
+		top: 5px;
+	}
+	75% {
+		transform: rotate(2.5deg);
+	}
+	100% {
+		transform: rotate(0deg); top: 0px;
+	}
+}
+
+@keyframes bodyh {
+	0% {
+		left: 60px;
+	}
+	75% {
+		top: 65px;
+	}
+	100% {
+		top: 60px;
+	}
+}
+
+@keyframes weaponh {
+	0% {
+		top: 30px;
+	}
+	75% {
+		top: 35px;
+	}
+	100% {
+		top: 30px;
+	}
+}
+
+/* heavey animation keyframes */ 
+
+@keyframes headh {
+	0% {
+		transform: rotate(0deg); top: 0px;
+	}
+	74% {
+		top: 5px;
+	}
+	75% {
+		transform: rotate(2.5deg);
+	}
+	100% {
+		transform: rotate(0deg); top: 0px;
+	}
+}
+
+@keyframes bodyh {
+	0% {
+		left: 60px;
+	}
+	75% {
+		top: 65px;
+	}
+	100% {
+		top: 60px;
+	}
+}
+
+@keyframes weaponh {
+	0% {
+		top: 30px;
+	}
+	75% {
+		top: 35px;
+	}
+	100% {
+		top: 30px;
+	}
+}
+
+
