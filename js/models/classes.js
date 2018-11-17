@@ -6,18 +6,17 @@ import {
   checks,
 } from '../models/status.js'
 
-//Example
-export function mage() {
+export function wizzard() {
   return {
-    health: 100,
+    health: 125,
     maxHealth:100,
-    mana: 90,
-    maxMana: 90,
-    maxEnergy:60,
-    energy: 60,
+    mana: 200,
+    maxMana: 200,
+    maxEnergy: 200,
+    energy: 200,
     normalAttack: abilities.spellFire,
-    heavyAttack: abilities.abilityDefendSelf,
-    specialAttack: abilities.spellHealSelf,
+    heavyAttack: abilities.spellHydro,
+    specialAttack: abilities.spellNova,
     equipment: {
       hand: equip.basicSword
     },
@@ -25,7 +24,7 @@ export function mage() {
     ailments: checks
   }
 }
-//Example
+
 export function warrior() {
   return {
     health: 200,
@@ -37,6 +36,25 @@ export function warrior() {
     normalAttack: abilities.wildSwing,
     heavyAttack: abilities.leachStrike,
     specialAttack: abilities.berserker,
+    equipment: {
+      hand: equip.basicSword
+    },
+    ...effectsList,
+    ailments: checks
+  }
+}
+
+export function knight() {
+  return{
+    health: 250,
+    maxHealth: 250,
+    energy: 120,
+    maxEnergy: 120,
+    mana: 100,
+    maxMana: 100,
+    normalAttack: abilities.swordSwing,
+    heavyAttack: abilities.shieldBash,
+    specialAttack: abilities.forTheKing,
     equipment: {
       hand: equip.basicSword
     },
