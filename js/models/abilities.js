@@ -14,6 +14,7 @@ export function normalAttack(attackee) {
     }
   }
 }
+
 /* 
 Example template:
 
@@ -23,6 +24,57 @@ export function 'nameOfAbility'(attackee){
   }
 }
 */
+
+
+// export function heavyAttack(inP) {
+//   inP.health -= 20;
+//   this.energy -= 20;
+//   this.mana -= 10;
+//   this.isBurned(this);
+// }
+
+// Wizzard Type Abilities
+export function spellFire(inP) {
+    inP.health -= 15;
+    inP.isBurned = true;
+    this.energy -= 10;
+    this.mana -= 15;
+}
+export function spellHydro(inP) {
+    inP.isBurned = false;
+    inP.energy -= 10;
+    this.energy -= 10;
+    this.mana -= 10;
+}
+
+export function spellNova(attackee) {
+    rndNova = 0;
+    rndNova = Math.floor(Math.random() * 50) + 25;
+    attackee.health -= rndNova;
+    this.health -= rndNova;
+    this.mana -= 50;
+}
+
+// Warlock Type Abilities
+
+export function spellVine(inP, spell) {
+    inP.health -= 10;
+    inP.isStopped = true;
+    this.energy -= 5;
+    this.mana -= 15;
+  // if (this.isRooted()) {
+  //   console.log('I cant move!')
+  // }
+  // if (this.class !== 'druid') {
+  //   return 'I cant use this'
+  // }
+  // if (this.class === 'druid' && spell === 'vine') {
+  // }
+  // this.isBurned(this);
+}
+
+//Warrior type ablilities
+
 export function wildSwing(attackee) {
   this.ragePoints++
   attackee.health -= 10;
@@ -45,51 +97,54 @@ export function leachStrike(attackee) {
 
 export function berserker(attackee) {
   const rndDmg = 0;
+  rndDmg = Math.floor(Math.random() * 100);
   if (this.isEnraged) {
-    rndDmg = Math.floor(Math.random() * 100);
-    attackee.health -= rndDmg;
+    attackee.health -= rndDmg + 25;
+    this.health -= rndDmg;
     this.energy -= 90;
   } else {
-    attackee.health -= rndDmg + 25;
+    attackee.health -= rndDmg;
+    this.health -= rndDmg;
     this.isEnraged = false;
     this.energy -= 90;
   }
 }
 
-export function heavyAttack(inP) {
-  inP.health -= 20;
-  this.energy -= 20;
+//Knight Type Abilities
+
+export function swordSwing(attackee) {
+  bleedHits++
+  attackee.health -= 15;
+  attackee.isBleeding = true;
+  this.energy -= 15;
+  this.mana -= 5;
+}
+
+export function shieldBash(attackee) {
+  attackee.health -= 25;
+  this.energy -= 35;
   this.mana -= 10;
-  this.isBurned(this);
+  if(attackee.energy <= 50) {
+    attackee.energy -= 25;
+    this.energy += 20;
+  } else if( attackee.mana <= 50) {
+    attackee.mana -= 25;
+    this.mana += 25;
+  }
 }
 
-export function spellFire(inP) {
-    inP.health -= 15;
-    inP.isBurned = true;
-    this.energy -= 10;
-    this.mana -= 15;
-}
-export function spellHydro(inP) {
-    inP.isBurned = false;
-    this.energy -= 10;
-    this.mana -= 10;
+export function forTheKing(attackee) {
+  attackee.health -= 10;
+  this.energy -= 50;
+  this.mana -= 50;
+  if(attackee.bleedHits >= 3) {
+    attackee.health -= 50;
+    this.energy -= 40;
+    this.mana -= 40;
+  }
 }
 
-export function spellVine(inP, spell) {
-  if (this.isRooted()) {
-    console.log('I cant move!')
-  }
-  if (this.class !== 'druid') {
-    return 'I cant use this'
-  }
-  if (this.class === 'druid' && spell === 'vine') {
-    inP.health -= 10;
-    inP.isStopped = true;
-    this.energy -= 5;
-    this.mana -= 15;
-  }
-  this.isBurned(this);
-}
+// All Type Abilities
 
 export function spellHealSelf() {
   this.potions++
@@ -97,7 +152,6 @@ export function spellHealSelf() {
     this.health += 5;
     this.energy += 10;
     this.mana -= 10;
-    this.isBurned(this);
   } else {
     return 'no heals for me'
   }
@@ -105,7 +159,16 @@ export function spellHealSelf() {
 }
 export function abilityDefendSelf() {
     this.health += 10;
-    this.energy -= 15;
+    this.energy -= 20;
 }
 
-//Warrior type ablilities
+
+
+
+
+
+
+
+
+
+

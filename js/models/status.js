@@ -6,7 +6,9 @@ export const effectsList = {
   isRooted: false,
   isBurned: false,
   isEnraged: false,
-  ragePoints: 0
+  isBleeding: false,
+  ragePoints: 0,
+  bleedHits: 0
 }
 
 //These will be checks for damage that can happen to a class
@@ -31,5 +33,11 @@ function shouldBurn(player) {
     player.health -= 10;
     console.log(player)
     console.log('I am BURNIN!🔥')
+  }
+}
+
+function shouldBleed(player) {
+  if(player.isBleeding) {
+    player.health -= 10;
   }
 }
