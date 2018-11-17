@@ -45,7 +45,7 @@ export function warrior() {
 }
 
 export function knight() {
-  return{
+  return {
     health: 250,
     maxHealth: 250,
     energy: 120,
@@ -55,6 +55,25 @@ export function knight() {
     normalAttack: abilities.swordSwing,
     heavyAttack: abilities.shieldBash,
     specialAttack: abilities.forTheKing,
+    equipment: {
+      hand: equip.basicSword
+    },
+    ...effectsList,
+    ailments: checks
+  }
+}
+
+export function warlock() {
+  return {
+    health: 500,
+    maxHealth: 500,
+    energy: 100,
+    maxEnergy: 100,
+    mana: 50,
+    maxMana: 50,
+    normalAttack: abilities.spellVine,
+    heavyAttack: abilities.darkSphere,
+    specialAttack: abilities.superGravity,
     equipment: {
       hand: equip.basicSword
     },

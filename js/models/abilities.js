@@ -55,13 +55,13 @@ export function spellNova(attackee) {
     this.mana -= 50;
 }
 
-// Warlock Type Abilities
+//Warlock Type Abilities
 
-export function spellVine(inP, spell) {
+export function spellVine(inP) {
     inP.health -= 10;
     inP.isStopped = true;
-    this.energy -= 5;
-    this.mana -= 15;
+    this.energy -= 10;
+    this.health -= 50;
   // if (this.isRooted()) {
   //   console.log('I cant move!')
   // }
@@ -71,6 +71,39 @@ export function spellVine(inP, spell) {
   // if (this.class === 'druid' && spell === 'vine') {
   // }
   // this.isBurned(this);
+}
+
+export function darkSphere(attackee) {
+  this.darkEnergy++;
+  const rndSphere = 0;
+  rndSphere = Math.floor(Math.random() * 50);
+  attackee.health -= rndSphere;
+  this.health -= rndSphere - 10;
+  this.energy -= 10;
+}
+
+export function superGravity(attackee) {
+  if(this.darkEnergy === 1) {
+    attackee.health -= 15;
+    this.health -= 15;
+    this.energy -= 10;
+    this.darkEnergy = 0;
+  } else if (this.darkEnergy === 2) {
+    attackee.health -= 20;
+    this.health -= 15;
+    this.energy -= 10;
+    this.darkEnergy = 0;
+  } else if (this.darkEnergy === 3) {
+    attackee.health -= 30;
+    this.health -= 20;
+    this.energy -= 10;
+    this.darkEnergy = 0; 
+  } else if (this.darkEnergy === 4) {
+    attackee.health -= 40;
+    this.health += 20;
+    this.energy -= 10;
+    this.darkEnergy = 0;
+  }
 }
 
 //Warrior type ablilities
@@ -127,7 +160,7 @@ export function shieldBash(attackee) {
   if(attackee.energy <= 50) {
     attackee.energy -= 25;
     this.energy += 20;
-  } else if( attackee.mana <= 50) {
+  } else if(attackee.mana <= 50) {
     attackee.mana -= 25;
     this.mana += 25;
   }

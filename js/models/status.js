@@ -8,7 +8,8 @@ export const effectsList = {
   isEnraged: false,
   isBleeding: false,
   ragePoints: 0,
-  bleedHits: 0
+  bleedHits: 0,
+  darkEnergy: 0
 }
 
 //These will be checks for damage that can happen to a class
