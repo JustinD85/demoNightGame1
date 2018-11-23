@@ -6,7 +6,7 @@ import {
   checks,
 } from '../models/status.js'
 
-export function wizzard() {
+export function wizard() {
   return {
     health: 125,
     maxHealth:100,
