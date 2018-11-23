@@ -6,7 +6,13 @@ let canvHeight;
 var myPlayers = [];
 var characterPlayer = new Image();
 var projectileAnimation = new Image();
-window.addEventListener("load", buildInitialPlayerAnimations);// change to when they pick characters
+window.addEventListener("load", start);// change to when they pick characters
+
+
+function start(){
+  buildInitialPlayerAnimations();
+  setInterval(runGameAnimation, 100);
+}
 
 function buildInitialPlayerAnimations() {
   canv = document.querySelector('canvas');
@@ -53,9 +59,6 @@ function runGameAnimation() {
                   player.h);
   })
 }
-
-setInterval(runGameAnimation, 100);
-
 
 // function playerWeakAttack(attacker, defender) {
 //   attacker.weakMeleeAttack(defender);
