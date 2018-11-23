@@ -14,7 +14,7 @@ import {
 You can view the methods available to you in game from looking at the game.js file */
 const game = new Game();
 game.createPlayer('duy', 'warrior', true);
-game.createPlayer('gabe', 'mage');
+game.createPlayer('gabe', 'wizard');
 game.init(updateDOM)
 /**
  * EXAMPLE FOR BUTTON, PLEASE CHANGE TO MAKE SENSE TO YOU.
