@@ -96,8 +96,7 @@ export function leachStrike(attackee) {
 }
 
 export function berserker(attackee) {
-  const rndDmg = 0;
-  rndDmg = Math.floor(Math.random() * 100);
+  const rndDmg = Math.floor(Math.random() * 100);
   if (this.isEnraged) {
     attackee.health -= rndDmg + 25;
     this.health -= rndDmg;
