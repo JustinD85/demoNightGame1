@@ -1,16 +1,17 @@
+* {
+  font-family: 'Germania One', cursive;
+}
 body {
   margin: 0px;
   padding: 0px;
   height: 100vh;
-  background: #571745;
-  color: #000000;
+  background-color: #f8efd0;
   display: grid;
   grid-template-rows: 150px 500px 1fr;
   grid-template-areas:
     "title title"
     "map map"
     "p1 p2";
-
 }
 
 canvas {
@@ -18,8 +19,9 @@ canvas {
   width: 90%;
 }
 
-img {
-  width: 750px;
+h1 {
+  margin: auto;
+  font-size: 75px;
   -webkit-animation: jello-vertical 0.9s both;
   animation: jello-vertical 0.9s both;
 }
@@ -34,6 +36,9 @@ progress {
 
 }
 
+header {
+  background-color: #425c6c;
+}
 
 canvas {
   background: lightgrey;
@@ -74,7 +79,7 @@ table {
 
 #player-one-section {
   grid-area: p1;
-  background: #900c3d;
+  background: #d88859;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -83,7 +88,7 @@ table {
 
 #player-two-section {
   grid-area: p2;
-  background: #c70139;
+  background: #8b8582;
   display: flex;
   align-items: center;
   flex-direction: column;
