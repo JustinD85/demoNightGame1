@@ -9,7 +9,7 @@ import {
 export function wizard() {
   return {
     health: 125,
-    maxHealth:100,
+    maxHealth:125,
     mana: 200,
     maxMana: 200,
     maxEnergy: 200,

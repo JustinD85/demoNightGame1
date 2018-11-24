@@ -47,12 +47,12 @@ export function spellHydro(inP) {
     this.mana -= 10;
 }
 
-export function spellNova(attackee) {
-    rndNova = 0;
-    rndNova = Math.floor(Math.random() * 50) + 25;
-    attackee.health -= rndNova;
+export function spellNova(inP) {
+    const rndNova = Math.floor(Math.random() * 50) + 25;
+    inP.health -= rndNova;
     this.health -= rndNova;
     this.mana -= 50;
+    this.energy -= 50;
 }
 
 // Warlock Type Abilities
@@ -96,8 +96,7 @@ export function leachStrike(attackee) {
 }
 
 export function berserker(attackee) {
-  const rndDmg = 0;
-  rndDmg = Math.floor(Math.random() * 100);
+  const rndDmg = Math.floor(Math.random() * 100);
   if (this.isEnraged) {
     attackee.health -= rndDmg + 25;
     this.health -= rndDmg;

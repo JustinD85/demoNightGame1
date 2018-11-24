@@ -1,4 +1,3 @@
-
 var myPlayers = [];
 const p1 = 'player1';
 const p2 = 'player2';
