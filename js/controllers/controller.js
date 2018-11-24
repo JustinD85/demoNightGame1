@@ -14,7 +14,7 @@ import {
 You can view the methods available to you in game from looking at the game.js file */
 const game = new Game();
 game.createPlayer('duy', 'warrior', true);
-game.createPlayer('gabe', 'mage');
+game.createPlayer('gabe', 'wizard');
 game.init(updateDOM)
 /**
  * EXAMPLE FOR BUTTON, PLEASE CHANGE TO MAKE SENSE TO YOU.
@@ -24,10 +24,10 @@ game.init(updateDOM)
 getAll('.normal-attack').forEach(function (button) {
   button.addEventListener('click', function (normalAttackButton) {
     if (normalAttackButton.target.closest('#player-one-section')) {
-      myPlayers[0].createProjectile(myPlayers[1]);
+      weakAttack('player1', 'player2');
       game.normalAttack('p1', updateDOM); //Only pass in the attacker
     } else if (normalAttackButton.target.closest('#player-two-section')) {
-      myPlayers[1].createProjectile(myPlayers[0]);
+      weakAttack('player2', 'player1');
       game.normalAttack('p2', updateDOM);
     }
   });
@@ -36,10 +36,10 @@ getAll('.normal-attack').forEach(function (button) {
 getAll('.heavy-attack').forEach(function (button) {
   button.addEventListener('click', function (heavyAttackButton) {
     if (heavyAttackButton.target.closest('#player-one-section')) {
-      myPlayers[0].createProjectile(myPlayers[1]);
+     
       game.heavyAttack('p1', updateDOM); //Only pass in the attacker
     } else if (heavyAttackButton.target.closest('#player-two-section')) {
-      myPlayers[1].createProjectile(myPlayers[0]);
+      
       game.heavyAttack('p2', updateDOM);
     }
   });
@@ -48,10 +48,10 @@ getAll('.heavy-attack').forEach(function (button) {
 getAll('.special-attack').forEach(function (button) {
   button.addEventListener('click', function (specialAttackButton) {
     if (specialAttackButton.target.closest('#player-one-section')) {
-      myPlayers[0].createProjectile(myPlayers[1]);
+     
       game.specialAttack('p1', updateDOM); //Only pass in the attacker
     } else if (specialAttackButton.target.closest('#player-two-section')) {
-      myPlayers[1].createProjectile(myPlayers[0]);
+      
       game.specialAttack('p2', updateDOM);
     }
   });
