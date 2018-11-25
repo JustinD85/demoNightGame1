@@ -20,12 +20,14 @@
     <img id="stage" src="thebackground.png">
     <article class="arena">
       <div class="character p1 p1rest ">
+        <p class="outcomes">player one outcome</p>
         <img class="headk" src="game-characters/knighthead.svg">
         <img class="bodyk" src="game-characters/knightbody.svg">
         <img class="feetk" src="game-characters/knightfeet.svg">
         <img class="weaponk" src="game-characters/knightweapon.svg">
       </div>
       <div class="character p2 p2rest">
+        <p class="outcomes">player two outcome</p>
         <img class="headk" src="game-characters/knighthead.svg">
         <img class="bodyk" src="game-characters/knightbody.svg">
         <img class="feetk" src="game-characters/knightfeet.svg">
@@ -60,9 +62,9 @@
         </table>
       </article>
       <article class="bottom-article">
-        <img class="btn normal-attack" src="imgs/normalbutton.svg">
-        <img class="btn heavy-attack" src="imgs/heavybutton.svg">
-        <img class="btn special-attack" src="imgs/specialbutton.svg">
+        <img class="btn normal-attack-one" src="imgs/normalbutton.svg">
+        <img class="btn heavy-attack-one" src="imgs/heavybutton.svg">
+        <img class="btn special-attack-one" src="imgs/specialbutton.svg">
       </article>
     </section>
     <section id="player-two-section">
@@ -88,11 +90,12 @@
         </table>
       </article>
       <article class="bottom-article">
-        <img class="btn normal-attack" src="imgs/normalbutton.svg">
-        <img class="btn heavy-attack" src="imgs/heavybutton.svg">
-        <img class="btn special-attack" src="imgs/specialbutton.svg">
+        <img class="btn normal-attack-two" src="imgs/normalbutton.svg">
+        <img class="btn heavy-attack-two" src="imgs/heavybutton.svg">
+        <img class="btn special-attack-two" src="imgs/specialbutton.svg">
       </article>
     </section>
+    <script src="animationchange.js"></script>
     <script src="js/controllers/makePlayer.js"></script>
     <script src="js/controllers/canvas.js"></script>
     <script type="module" src="js/controllers/controller.js"></script>

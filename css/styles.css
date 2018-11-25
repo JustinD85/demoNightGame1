@@ -125,3 +125,10 @@ table {
   display: flex;
   justify-content: space-around;
 }
+
+.outcomes {
+  display: block;
+  position: relative;
+  top: -20px;
+  left: 30px;
+}
