@@ -66,11 +66,13 @@ function updateDOM(updatedPlayersAsJSON) {
       get('#js-p1-health').value = player.health / player.maxHealth * 100;
       get('#js-p1-energy').value = player.energy / player.maxEnergy * 100;
       get('#js-p1-mana').value = player.mana / player.maxMana * 100;
+      get('.p1-result').innerText = player.message;
     } else {
       get('#js-p2-name').innerText = player.name;
       get('#js-p2-health').value = player.health / player.maxHealth * 100;
       get('#js-p2-energy').value = player.energy / player.maxEnergy * 100;
       get('#js-p2-mana').value = player.mana / player.maxMana * 100;
+      get('.p2-result').innerText = player.message;
     }
   });
 }
