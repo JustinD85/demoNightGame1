@@ -14,6 +14,7 @@ import {
 export class Game {
   constructor() {
     this.players = [];
+    this.isP1Turn = true;
   }
 
   /**
@@ -21,7 +22,7 @@ export class Game {
    * @param {JSON} callback - function whose first argument is a JSON array of updated Objects
    */
   init(callback) {
-    callback(JSON.stringify(this.players));
+    callback(JSON.stringify(this.players), 'Game Ready!');
   }
 
   /**
@@ -34,6 +35,10 @@ export class Game {
     this.players.push(new Player(inName, inClass, isP1));
   }
 
+  changeTurns() {
+    this.isP1Turn = !this.isP1Turn;
+  }
+
   /**
    * Performs an Attack on the other player
    * @param {string} attacker - Choose 'p1' or 'p2'
@@ -43,36 +48,74 @@ export class Game {
     const playerOne = this.players[0]
     const playerTwo = this.players[1]
     if (attacker === 'p1') {
-      playerOne.normalAttack(playerTwo);
-      playerOne.ailments();
-    } else {
-      playerTwo.normalAttack(playerOne);
-      playerTwo.ailments();
+      if (this.isP1Turn === true) {
+        playerOne.normalAttack(playerTwo);
+        playerOne.ailments();
+        playerOne.message = ``;
+        playerTwo.message= `❇️`
+        this.changeTurns();
+      } else {
+        callback(JSON.stringify(this.players),`It's player two's turn!! 😡` );
+        return false;
+      }
     }
-    callback(JSON.stringify(this.players));
+      
+    if (attacker === 'p2') {
+      if (this.isP1Turn === false) {
+        playerTwo.normalAttack(playerOne);
+        playerTwo.ailments();
+        playerTwo.message = ``;
+        playerOne.message = `❇️`;
+        this.changeTurns();
+      } else {
+        callback(JSON.stringify(this.players),`It's player one's turn!! 😡`);
+        return false;
+      }
+    }
+    callback(JSON.stringify(this.players), `Success!`);
+    return true;
   }
   heavyAttack(attacker, callback) {
     const playerOne = this.players[0]
     const playerTwo = this.players[1]
     if (attacker === 'p1') {
-      playerOne.heavyAttack(playerTwo);
-    } else {
-      playerTwo.heavyAttack(playerOne);
+      if (this.isP1Turn === true) {
+        playerOne.heavyAttack(playerTwo);
+        playerOne.ailments();
+        playerOne.message = ``;
+        playerTwo.message= `❇️`
+        this.changeTurns();
+      } else {
+        callback(JSON.stringify(this.players), `It's player two's turn!! 😡`);
+        return false;
+      }
     }
-    playerOne.ailments();
-    playerTwo.ailments();
-    callback(JSON.stringify(this.players));
+      
+    if (attacker === 'p2') {
+      if (this.isP1Turn === false) {
+        playerTwo.heavyAttack(playerOne);
+        playerTwo.ailments();
+        playerTwo.message = ``;
+        playerOne.message= `❇️`
+        this.changeTurns();
+      } else {
+        callback(JSON.stringify(this.players), `It's player one's turn!! 😡`);
+        return false;
+      }
+    }
+    callback(JSON.stringify(this.players), `Success!`);
+    return true;
   }
   specialAttack(attacker, callback) {
     const playerOne = this.players[0]
     const playerTwo = this.players[1]
-    if (attacker === 'p1') {
+    if (attacker === 'p1' && this.isP1Turn === true) {
       playerOne.specialAttack(playerTwo);
-    } else {
+      playerOne.ailments();
+    } else if(attacker === 'p2' && this.isP1Turn === false){
       playerTwo.specialAttack(playerOne);
+      playerTwo.ailments();
     }
-    playerOne.ailments();
-    playerTwo.ailments();
     callback(JSON.stringify(this.players));
   }
 }

@@ -4,7 +4,7 @@
 
 <svg xmlns="http://www.w3.org/2000/svg"
      width="100%" height="5%"
-     viewBox="0 0 1800 500">
+     viewBox="0 0 1800 520">
   <path id="Selection"
       transform="translate(-80,10)" 
         fill="tan" stroke="#654321" stroke-width="6px"

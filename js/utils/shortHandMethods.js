@@ -16,3 +16,7 @@ export function get(DOMelement) {
 export function getAll(DOMelements) {
   return document.querySelectorAll(DOMelements);
 }
+
+export function message(msg) {
+  document.querySelector('#message-box').innerHTML = `<h1 style='text-align:center'>${msg}</h1>`
+}

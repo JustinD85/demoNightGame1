@@ -1,16 +1,18 @@
+* {
+  font-family: 'Germania One', cursive;
+}
 body {
   margin: 0px;
   padding: 0px;
   height: 100vh;
-  background: #571745;
-  color: #000000;
+  background-color: #f8efd0;
   display: grid;
-  grid-template-rows: 150px 500px 1fr;
+  grid-template-rows: 150px 500px 100px 1fr;
   grid-template-areas:
     "title title"
     "map map"
+    "message message"
     "p1 p2";
-
 }
 
 canvas {
@@ -18,8 +20,9 @@ canvas {
   width: 90%;
 }
 
-img {
-  width: 750px;
+h1 {
+  margin: auto;
+  font-size: 75px;
   -webkit-animation: jello-vertical 0.9s both;
   animation: jello-vertical 0.9s both;
 }
@@ -34,6 +37,9 @@ progress {
 
 }
 
+header {
+  background-color: #425c6c;
+}
 
 canvas {
   background: lightgrey;
@@ -48,6 +54,17 @@ table {
   top: 30px;
 }
 
+#message-box {
+  background-color: #FFFFFF;
+  grid-area: message;
+}
+
+#stage {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 
 #title {
   grid-area: title;
@@ -57,15 +74,18 @@ table {
 
 
 #map {
+  margin: 10px auto;
+  width: 80%;
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   grid-area: map;
-  /* background: yellow; */
 }
 
 #player-one-section {
   grid-area: p1;
-  background: #900c3d;
+  background: #d88859;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -74,11 +94,15 @@ table {
 
 #player-two-section {
   grid-area: p2;
-  background: #c70139;
+  background: #8b8582;
   display: flex;
   align-items: center;
   flex-direction: column;
   font: 1em sans-serif;
+}
+
+.character {
+  z-index: 2;
 }
 
 .name {
@@ -106,4 +130,11 @@ table {
 .bottom-article {
   display: flex;
   justify-content: space-around;
+}
+
+.outcomes {
+  display: block;
+  position: relative;
+  top: -20px;
+  left: 30px;
 }

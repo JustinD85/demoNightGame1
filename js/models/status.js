@@ -22,6 +22,7 @@ export const effectsList = {
 export function checks() {
   const player = this;
   shouldBurn(player);
+  shouldBleed(player);
 }
 
 

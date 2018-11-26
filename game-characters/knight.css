@@ -1,0 +1,253 @@
+
+.headk {
+	width: 150px;
+	animation: head 1s linear infinite;
+	position: absolute;
+}
+
+.bodyk {
+	width: 80px;
+	animation: body 1s linear infinite;
+	position: absolute;
+	
+}
+
+.feetk {
+	top: 135px;
+	left: 75PX;
+	width: 45px;
+	position: absolute;
+}
+
+.weaponk {
+	width: 80px;
+	transform-origin: bottom;
+	position: absolute;
+	animation: weapon 1s infinite;
+}
+
+#hurth {
+	animation: headh 0.3s linear infinite;
+}
+
+#hurtb {
+	animation: bodyh 0.3s linear infinite;
+}
+
+#hurtf {
+	animation: feeth 0.3s linear infinite;
+}
+
+#hurtw {
+	animation: weaponh 0.3s linear infinite;
+}
+
+div {
+	margin: 20px;
+	position: relative;
+	height: 150px;
+}
+
+
+@keyframes head {
+	0% {
+		transform: rotate(0deg); top: 0px;
+	}
+	74% {
+		top: 5px;
+	}
+	75% {
+		transform: rotate(2.5deg);
+	}
+	100% {
+		transform: rotate(0deg); top: 0px;
+	}
+}
+
+@keyframes body {
+	0% {
+		top: 70px; left: 52px;
+	}
+	75% {
+		top: 75px;
+	}
+	100% {
+		top: 70px; left: 52px;
+	}
+}
+
+@keyframes weapon {
+	0% {
+		top: 25px; left: 110px;
+	}
+	75% {
+		top: 30px;
+	}
+	100% {
+		top: 25px; left: 110px;
+	}
+}
+
+/* hurt animation keyframes */ 
+
+@keyframes headh {
+	0% {
+		transform: rotate(0deg); top: 0px; left: 0px;
+	}
+
+	50% {
+		transform: rotate(10deg); top: 5px; left: -8px;
+	}
+	100% {
+		transform: rotate(10deg); top: 5px; left: -8px;
+	}
+}
+
+@keyframes bodyh {
+	0% {
+		left: 52px; top: 70px;
+	}
+	50% {
+		 left: 40px;  top: 70px;
+	}
+	100% {
+		 left: 40px;  top: 70px;
+	}
+}
+
+@keyframes feeth {
+	0% {
+		left: 75PX; 
+	}
+	50% {
+		left: 60px; transform: rotate(-10deg);
+	}
+	100% {
+		left: 60px; transform: rotate(-10deg);
+	}
+}
+@keyframes weaponh {
+	0% {
+		top: 30px; left: 110px;
+	}
+	50% {
+		top: 35px; left: 100px; transform: rotate(10deg);
+	}
+	100% {
+		top: 35px; left: 100px; transform: rotate(10deg);
+	}
+}
+
+/* normal animation keyframes */ 
+
+@keyframes normalh {
+	0% {
+		transform: rotate(0deg); top: 0px; left: 0px;
+	}
+	25% {
+		transform: rotate(-5deg);
+	}
+	37% {
+		top: 5px; left: 300px;
+	}
+	37.5% {
+		transform: rotate(2.5deg);
+	}
+	50% {
+		transform: rotate(0deg); top: 0px;
+	}
+	100% {
+		transform: rotate(0deg); top: 0px; left: 0px;
+	}
+}
+
+@keyframes normalb {
+	0% {
+		top: 70px; left: 52px;
+	}
+	25% {
+		top: 75px;
+	}
+	37% {
+		left: 352px;
+	}
+	50% {
+		top: 70px;
+	}
+	100% {
+		top: 70px; left: 52px;
+	}
+}
+
+@keyframes normalw {
+	0% {
+		top: 25px; left: 110px;
+	}
+	25% {
+		transform: rotate(-10deg);
+	}
+	37% {
+		left: 410px;
+	}
+	50% {
+		top: 15px; transform: rotate(90deg);
+	}
+	100% {
+		top: 15px; left: 100px; transform: rotate(90deg);
+	}
+}
+
+/* heavy animation keyframes */
+
+@keyframes heavyh {
+	0% {
+		left: 0px; top: 0px;
+	}
+	75% {
+		left: 300px;
+	}
+
+	100% {
+		left: 0px; top: 0px;
+	}
+}
+
+
+@keyframes heavyb {
+	0% {
+		top: 70px; left: 52px;
+	}
+	75% {
+		left: 352px;
+	}
+	100% {
+		top: 70px; left: 52px;
+	}
+}
+
+@keyframes heavyw {
+	0% {
+		top: 15px; left: 100px;
+	}
+	25% {
+		transform: rotate(90deg); left: 110px;
+	}
+	75% {
+		 left: 20px; top: 15px; transform: rotate(90deg);
+	}
+	90% {
+		top: 15px; left: 100px; transform: rotate(90deg);
+	}
+	100% {
+		top: 15px; left: 100px; transform: rotate(90deg);
+	}
+}
+
+@keyframes movement {
+	20% {
+		left: 2000px;
+	}
+	100% {
+		left: 0px;
+	}
+}

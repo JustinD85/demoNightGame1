@@ -4,13 +4,14 @@ export function normalAttack(attackee) {
   const attacker = this;
   if (attacker.statusEffects.isRooted) {
     attacker.statusEffects.isRooted = !attacker.statusEffets.isRooted;
-    console.log('I cant move!')
+    return ('I cant move!')
   } else {
     if (attacker.energy > 9 && attackee.health > 0) {
       attackee.health -= 10;
       attacker.energy -= 10;
+      return `${attacker.name} attacked ${attackee.name} for 10dmg`;
     } else {
-      console.log('Sorry can\'t attack! Too tired, or target is dead')
+      return ('Sorry can\'t attack! Too tired, or target is dead')
     }
   }
 }
@@ -47,12 +48,12 @@ export function spellHydro(inP) {
     this.mana -= 10;
 }
 
-export function spellNova(attackee) {
-    rndNova = 0;
-    rndNova = Math.floor(Math.random() * 50) + 25;
-    attackee.health -= rndNova;
+export function spellNova(inP) {
+    const rndNova = Math.floor(Math.random() * 50) + 25;
+    inP.health -= rndNova;
     this.health -= rndNova;
     this.mana -= 50;
+    this.energy -= 50;
 }
 
 //Warlock Type Abilities
@@ -92,17 +93,17 @@ export function superGravity(attackee) {
     attackee.health -= 20;
     this.health -= 15;
     this.energy -= 10;
-    this.darkEnergy = 0;
+    this.darkEnergy = 1;
   } else if (this.darkEnergy === 3) {
     attackee.health -= 30;
     this.health -= 20;
     this.energy -= 10;
-    this.darkEnergy = 0; 
+    this.darkEnergy = 2; 
   } else if (this.darkEnergy === 4) {
     attackee.health -= 40;
     this.health += 20;
     this.energy -= 10;
-    this.darkEnergy = 0;
+    this.darkEnergy = 2;
   }
 }
 
@@ -129,8 +130,7 @@ export function leachStrike(attackee) {
 }
 
 export function berserker(attackee) {
-  const rndDmg = 0;
-  rndDmg = Math.floor(Math.random() * 100);
+  const rndDmg = Math.floor(Math.random() * 100);
   if (this.isEnraged) {
     attackee.health -= rndDmg + 25;
     this.health -= rndDmg;
