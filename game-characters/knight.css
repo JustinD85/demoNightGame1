@@ -1,14 +1,13 @@
 
-
 .headk {
 	width: 150px;
-	animation: head 2s linear infinite;
+	animation: head 1s linear infinite;
 	position: absolute;
 }
 
 .bodyk {
 	width: 80px;
-	animation: body 2s linear infinite;
+	animation: body 1s linear infinite;
 	position: absolute;
 	
 }
@@ -24,7 +23,7 @@
 	width: 80px;
 	transform-origin: bottom;
 	position: absolute;
-	animation: weapon 2s infinite;
+	animation: weapon 1s infinite;
 }
 
 #hurth {
@@ -43,37 +42,6 @@
 	animation: weaponh 0.3s linear infinite;
 }
 
-#normalh {
-	animation: normalh 0.8s linear infinite;
-}
-
-#normalb {
-	animation: normalb 0.8s linear infinite;
-}
-
-#normalf {
-	animation: normalf 0.8s linear infinite;
-}
-
-#normalw {
-	animation: normalw 0.8s linear infinite;
-}
-
-#heavyh {
-	animation: heavyh 0.8s linear infinite;
-}
-
-#heavyb {
-	animation: heavyb 0.8s linear infinite;
-}
-
-#heavyf {
-	animation: heavyf 0.8s linear infinite;
-}
-
-#heavyw {
-	animation: heavyw 0.8s linear infinite;
-}
 div {
 	margin: 20px;
 	position: relative;
@@ -174,13 +142,13 @@ div {
 
 @keyframes normalh {
 	0% {
-		transform: rotate(0deg); top: 0px;
+		transform: rotate(0deg); top: 0px; left: 0px;
 	}
 	25% {
 		transform: rotate(-5deg);
 	}
 	37% {
-		top: 5px;
+		top: 5px; left: 300px;
 	}
 	37.5% {
 		transform: rotate(2.5deg);
@@ -189,7 +157,7 @@ div {
 		transform: rotate(0deg); top: 0px;
 	}
 	100% {
-		transform: rotate(0deg); top: 0px;
+		transform: rotate(0deg); top: 0px; left: 0px;
 	}
 }
 
@@ -200,8 +168,11 @@ div {
 	25% {
 		top: 75px;
 	}
+	37% {
+		left: 352px;
+	}
 	50% {
-		top: 70px; left: 52px;
+		top: 70px;
 	}
 	100% {
 		top: 70px; left: 52px;
@@ -213,37 +184,41 @@ div {
 		top: 25px; left: 110px;
 	}
 	25% {
-		transform: rotate(-10deg); left: 110px;
+		transform: rotate(-10deg);
+	}
+	37% {
+		left: 410px;
 	}
 	50% {
-		 left: 100px; top: 15px; transform: rotate(90deg);
+		top: 15px; transform: rotate(90deg);
 	}
 	100% {
 		top: 15px; left: 100px; transform: rotate(90deg);
 	}
 }
 
-/* heavey animation keyframes */ 
+/* heavy animation keyframes */
 
 @keyframes heavyh {
 	0% {
-		left: 0px;
+		left: 0px; top: 0px;
 	}
 	75% {
-		left: -5px;
+		left: 300px;
 	}
 
 	100% {
-		left: 0px;
+		left: 0px; top: 0px;
 	}
 }
+
 
 @keyframes heavyb {
 	0% {
 		top: 70px; left: 52px;
 	}
 	75% {
-		left: 47px;
+		left: 352px;
 	}
 	100% {
 		top: 70px; left: 52px;
@@ -265,5 +240,14 @@ div {
 	}
 	100% {
 		top: 15px; left: 100px; transform: rotate(90deg);
+	}
+}
+
+@keyframes movement {
+	20% {
+		left: 2000px;
+	}
+	100% {
+		left: 0px;
 	}
 }

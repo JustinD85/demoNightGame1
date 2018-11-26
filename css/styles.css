@@ -7,10 +7,11 @@ body {
   height: 100vh;
   background-color: #f8efd0;
   display: grid;
-  grid-template-rows: 150px 500px 1fr;
+  grid-template-rows: 150px 500px 100px 1fr;
   grid-template-areas:
     "title title"
     "map map"
+    "message message"
     "p1 p2";
 }
 
@@ -51,6 +52,11 @@ table {
   position: absolute;
   left: 50PX;
   top: 30px;
+}
+
+#message-box {
+  background-color: #FFFFFF;
+  grid-area: message;
 }
 
 #stage {
