@@ -8,6 +8,7 @@ class Player {
     this.class = myClass;
     this.name = myName;
     this.isP1 = isP1 || false;
+    this.message = 'Ready!';
     return { ...this,
       ...classes[myClass]()
     } //?
