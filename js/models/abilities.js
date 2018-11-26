@@ -4,13 +4,14 @@ export function normalAttack(attackee) {
   const attacker = this;
   if (attacker.statusEffects.isRooted) {
     attacker.statusEffects.isRooted = !attacker.statusEffets.isRooted;
-    console.log('I cant move!')
+    return ('I cant move!')
   } else {
     if (attacker.energy > 9 && attackee.health > 0) {
       attackee.health -= 10;
       attacker.energy -= 10;
+      return `${attacker.name} attacked ${attackee.name} for 10dmg`;
     } else {
-      console.log('Sorry can\'t attack! Too tired, or target is dead')
+      return ('Sorry can\'t attack! Too tired, or target is dead')
     }
   }
 }

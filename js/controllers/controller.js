@@ -5,7 +5,8 @@ import {
 
 import {
   get,
-  getAll
+  getAll,
+  message
 } from '../utils/shortHandMethods.js';
 //The above gives you the Game class, and shorthand query Selectors for your use;
 
@@ -24,11 +25,9 @@ game.init(updateDOM)
 getAll('.normal-attack').forEach(function (button) {
   button.addEventListener('click', function (normalAttackButton) {
     if (normalAttackButton.target.closest('#player-one-section')) {
-      weakAttack('player1', 'player2');
-      game.normalAttack('p1', updateDOM); //Only pass in the attacker
+      game.normalAttack('p1', updateDOM) && playerOneNormalAnimation();//&& weakAttack('player1', 'player2');
     } else if (normalAttackButton.target.closest('#player-two-section')) {
-      weakAttack('player2', 'player1');
-      game.normalAttack('p2', updateDOM);
+      game.normalAttack('p2', updateDOM) && playerTwoNormalAnimation();//&& weakAttack('player2', 'player1');
     }
   });
 });
@@ -36,11 +35,9 @@ getAll('.normal-attack').forEach(function (button) {
 getAll('.heavy-attack').forEach(function (button) {
   button.addEventListener('click', function (heavyAttackButton) {
     if (heavyAttackButton.target.closest('#player-one-section')) {
-     
-      game.heavyAttack('p1', updateDOM); //Only pass in the attacker
+      game.heavyAttack('p1', updateDOM) && playerOneHeavyAnimation();
     } else if (heavyAttackButton.target.closest('#player-two-section')) {
-      
-      game.heavyAttack('p2', updateDOM);
+      game.heavyAttack('p2', updateDOM) && playerTwoHeavyAnimation();
     }
   });
 });
@@ -58,7 +55,7 @@ getAll('.special-attack').forEach(function (button) {
 });
 
 /*EXAMPLE CALLBACK FUNCTION */
-function updateDOM(updatedPlayersAsJSON) {
+function updateDOM(updatedPlayersAsJSON, msg) {
   const playerObjectsInArray = JSON.parse(updatedPlayersAsJSON);
   playerObjectsInArray.forEach(function (player) {
     if (player.isP1) {
@@ -66,13 +63,14 @@ function updateDOM(updatedPlayersAsJSON) {
       get('#js-p1-health').value = player.health / player.maxHealth * 100;
       get('#js-p1-energy').value = player.energy / player.maxEnergy * 100;
       get('#js-p1-mana').value = player.mana / player.maxMana * 100;
-      get('.p1-result').innerText = player.message;
-    } else {
+      get('.p1-result').innerText = player.message || ``;
+    } else{
       get('#js-p2-name').innerText = player.name;
       get('#js-p2-health').value = player.health / player.maxHealth * 100;
       get('#js-p2-energy').value = player.energy / player.maxEnergy * 100;
       get('#js-p2-mana').value = player.mana / player.maxMana * 100;
-      get('.p2-result').innerText = player.message;
-    }
+      get('.p2-result').innerText = player.message || ``;
+    } 
   });
+  message(msg);
 }

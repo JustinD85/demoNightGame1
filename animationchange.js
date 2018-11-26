@@ -3,10 +3,10 @@ var playerbody = document.querySelectorAll(".bodyk");
 var playerFeet = document.querySelectorAll(".feetk");
 var playerWeapon = document.querySelectorAll(".weaponk");
 
-document.querySelector(".normal-attack-one").addEventListener("click", playerOneNormalAnimation);
-document.querySelector(".heavy-attack-one").addEventListener("click", playerOneHeavyAnimation);
-document.querySelector(".normal-attack-two").addEventListener("click", playerTwoNormalAnimation);
-document.querySelector(".heavy-attack-two").addEventListener("click", playerTwoHeavyAnimation);
+// document.querySelector(".normal-attack-one").addEventListener("click", playerOneNormalAnimation);
+// document.querySelector(".heavy-attack-one").addEventListener("click", playerOneHeavyAnimation);
+// document.querySelector(".normal-attack-two").addEventListener("click", playerTwoNormalAnimation);
+// document.querySelector(".heavy-attack-two").addEventListener("click", playerTwoHeavyAnimation);
 
 function playerOneNormalAnimation() {
   playerNormalAnimaiton(0);
