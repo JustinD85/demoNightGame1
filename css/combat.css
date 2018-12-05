@@ -1,0 +1,50 @@
+.arena {
+  width: 90%;
+  min-width: 800px;
+  height: 90%;
+  margin: auto;
+  position: relative;
+}
+
+.character {
+  height: 300px;
+  width: 300px;
+  position: absolute;
+}
+
+.p1 {
+  --p1-left: 200px;
+  --p1-top: 230px;
+  top: var(--p1-top);
+  left: var(--p1-left);
+  transition: .5s;
+  transition-timing-function: var(--p1-transition-type);
+}
+
+.p2 {
+  --p2-right: 200px;
+  --p2-top: 230px;
+  top: var(--p2-top);
+  right: var(--p2-right);
+  transition: .5s;
+  transition-timing-function: var(--p2-transition-type);
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+.hop {
+  left: var(--element-hop);
+  top: 50px;
+  transition: .5s;
+}
+
+
+.p2rest {
+  /* top: 100px;
+  right: 50px; */
+}
+

@@ -7,58 +7,80 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animation.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/combat.css">
+    <link rel="stylesheet" href="game-characters/knight.css">
+    <link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
+    <title>JS Dungeon</title>
   </head>
 
   <body>
     <header id="title">
-      <img src="title.svg" alt="title">
+      <h1>Javascript Dungeon</h1>
     </header>
     <section id="map">
-      <canvas>
-      </canvas>
-    </section>
+      <img id="stage" src="thebackground.png">
+      <article class="arena">
+        <div class="character p1 p1rest ">
+          <p class="p1-result outcomes">❇️</p>
+          <img class="headk" src="game-characters/knighthead.svg">
+          <img class="bodyk" src="game-characters/knightbody.svg">
+          <img class="feetk" src="game-characters/knightfeet.svg">
+          <img class="weaponk" src="game-characters/knightweapon.svg">
+        </div>
+        <div class="character p2 p2rest">
+          <p class="p2-result outcomes"></p>
+          <img class="headk" src="game-characters/warlockhead.svg">
+          <img class="bodyk" src="game-characters/warlockbody.svg">
+          <img class="feetk" src="game-characters/warlockfeet.svg">
+          <img class="weaponk" src="game-characters/warlockweapon.svg">
+        </div>
+      </article>
+      <!-- <canvas>
+    </canvas> -->
+  </section>
+  <section id="message-box">
+  </section>
     <section id="player-one-section">
       <article class="top-player-article">
-        <img class="status-background" src="statusbackground.svg">
+        <img class="status-background" src="imgs/statusbackground.svg">
         <table>
           <tr>
-          <td class="name">Name: <span id="js-p1-name">player one</span></td>
-          <td>Health:
-            <progress value="73" max="100" id="js-p1-health">
-            </progress>
-          </td>
+            <td class="name">Name: <span id="js-p1-name">player one</span></td>
+            <td>Health:
+              <progress value="73" max="100" id="js-p1-health">
+              </progress>
+            </td>
           </tr>
           <tr>
-          <td></td>
-          <td>Energy: 
-             <progress value="88" max="100"
-              id="js-p1-energy"></progress>
-          </td>
-            </tr>
-            <tr>
             <td></td>
-            <td>Mana: 
+            <td>Energy:
+              <progress value="88" max="100" id="js-p1-energy"></progress>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Mana:
               <progress value="56" max="100" id="js-p1-mana"></progress></td>
           </tr>
         </table>
       </article>
       <article class="bottom-article">
-        <img class="btn weakAttk" src="normalbutton.svg">
-        <img class="btn heavyAttk" src="heavybutton.svg">
-        <img class="btn" src="specialbutton.svg">
+        <img class="btn normal-attack normal-attack-one" src="imgs/normalbutton.svg">
+        <img class="btn heavy-attack heavy-attack-one" src="imgs/heavybutton.svg">
+        <img class="btn special-attack special-attack-one" src="imgs/specialbutton.svg">
       </article>
     </section>
     <section id="player-two-section">
+
       <article class="top-player-article">
-        <img class="status-background" src="statusbackground.svg">
+        <img class="status-background" src="imgs/statusbackground.svg">
         <table>
           <tr>
-          <td class="name">Name: <span id="js-p2-name">player one</span></td>
-          <td>Health:
-            <progress value="73" max="100" id="js-p2-health">
-            </progress>
-          </td>
+            <td class="name">Name: <span id="js-p2-name">player one</span></td>
+            <td>Health:
+              <progress value="73" max="100" id="js-p2-health">
+              </progress>
+            </td>
           </tr>
           <tr>
             <td></td>
@@ -71,12 +93,15 @@
         </table>
       </article>
       <article class="bottom-article">
-        <img class="btn weakAttk" src="normalbutton.svg">
-        <img class="btn heavyAttk" src="heavybutton.svg">
-        <img class="btn" src="specialbutton.svg">
+        <img class="btn normal-attack normal-attack-two" src="imgs/normalbutton.svg">
+        <img class="btn heavy-attack heavy-attack-two" src="imgs/heavybutton.svg">
+        <img class="btn special-attack special-attack-two" src="imgs/specialbutton.svg">
       </article>
     </section>
-    <script src="js/game.js"></script>
+    <script src="animationchange.js"></script>
+    <script src="js/controllers/makePlayer.js"></script>
+    <script src="js/controllers/canvas.js"></script>
+    <script type="module" src="js/controllers/controller.js"></script>
   </body>
 
 </html>
